@@ -8,7 +8,7 @@
 
 ### `host`
 
-IPFS host. Default `"cloudflare-ipfs.com"`
+IPFS host. Default `"ipfs.komputing.org"`
 
 ### `port`
 

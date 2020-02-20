@@ -10,7 +10,7 @@ inputs:
   host:
     description: 'IPFS host'
     required: false
-    default: 'cloudflare-ipfs.com'
+    default: 'ipfs.komputing.org'
   port:
     description: 'IPFS port'
     required: false
