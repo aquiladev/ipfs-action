@@ -8,21 +8,25 @@
 
 ### `host`
 
-IPFS host. Default `"ipfs.komputing.org"`
+IPFS host. Default `ipfs.komputing.org`
 
 ### `port`
 
-IPFS port. Default `"443"`
+IPFS host's port. Default `443`
 
 ### `protocol`
 
-IPFS protocol. Default `"https"`
+IPFS host's protocol. Default `https`
+
+### `verbose`
+
+Level of verbosity [`false` - quiet, `true` - verbose]. Default `false`
 
 ## Outputs
 
 ### `hash`
 
-IPFS hash.
+IPFS root's hash.
 
 ## Example usage
 

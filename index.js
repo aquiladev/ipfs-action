@@ -8,14 +8,17 @@ try {
   const host = core.getInput('host');
   const port = core.getInput('port');
   const protocol = core.getInput('protocol');
+  const verbose = (core.getInput('verbose') === 'true');
 
-  uploader.upload(host, port, protocol, path)
+  uploader.upload(host, port, protocol, path, verbose)
     .then(hash => {
       core.setOutput("hash", hash);
 
-      // Get the JSON webhook payload for the event that triggered the workflow
-      const payload = JSON.stringify(github.context.payload, undefined, 2);
-      console.log(`The event payload: ${payload}`);
+      if (verbose) {
+        // Get the JSON webhook payload for the event that triggered the workflow
+        const payload = JSON.stringify(github.context.payload, undefined, 2);
+        console.log(`The event payload: ${payload}`);
+      }
     })
     .catch(core.setFailed);
 } catch (error) {
