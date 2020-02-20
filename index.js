@@ -12,13 +12,15 @@ try {
 
   uploader.upload(host, port, protocol, path, verbose)
     .then(hash => {
-      core.setOutput("hash", hash);
+      core.setOutput('hash', hash);
 
       if (verbose) {
         // Get the JSON webhook payload for the event that triggered the workflow
         const payload = JSON.stringify(github.context.payload, undefined, 2);
         console.log(`The event payload: ${payload}`);
       }
+
+      console.log('Upload to IPFS finished successfully', hash);
     })
     .catch(core.setFailed);
 } catch (error) {
