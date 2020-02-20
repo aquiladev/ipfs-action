@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const ipfsClient = require('ipfs-http-client');
+const IpfsHttpClient = require('ipfs-http-client');
+const { globSource } = IpfsHttpClient
 
 try {
   const path = core.getInput('path');
@@ -8,8 +9,9 @@ try {
   const port = core.getInput('port');
   const protocol = core.getInput('protocol');
 
-  const ipfs = ipfsClient({ host, port, protocol });
-  ipfs.addFromFs(path, { recursive: true, pin: true })
+  const ipfs = IpfsHttpClient({ host, port, protocol });
+  
+  ipfs.add(globSource(path, { recursive: true }))
     .then(result => {
       const remoteDir = result[result.length - 1]
       core.setOutput("hash", remoteDir.hash);
