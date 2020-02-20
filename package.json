@@ -1,6 +1,6 @@
 {
   "name": "ipfs-action",
-  "version": "0.0.2",
+  "version": "0.1.0-alpha",
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/aquiladev/ipfs-action#readme",
   "dependencies": {
     "@actions/core": "1.2.2",
+    "@actions/github": "2.1.0",
     "ipfs-http-client": "42.0.0"
   }
 }
