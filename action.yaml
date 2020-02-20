@@ -1,0 +1,27 @@
+name: 'Upload to IPFS'
+description: 'Upload to IPFS'
+branding:
+  icon: 'upload-cloud'
+  color: 'green'
+inputs:
+  path:
+    description: 'directory path to upload'
+    required: true
+  host:
+    description: 'IPFS host'
+    required: false
+    default: 'cloudflare-ipfs.com'
+  port:
+    description: 'IPFS port'
+    required: false
+    default: '443'
+  protocol:
+    description: 'IPFS protocol'
+    required: false
+    default: 'https'
+outputs:
+  hash:
+    description: 'IPFS hash'
+runs:
+  using: 'node12'
+  main: 'index.js'
