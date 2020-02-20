@@ -26,6 +26,8 @@ IPFS hash.
 
 ## Example usage
 
-uses: actions/ipfs-action@v1
+```
+uses: aquiladev/ipfs-action@v1
 with:
-  path: './'
+  path: ./
+```
