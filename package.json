@@ -31,6 +31,6 @@
     "ipfs-http-client": "42.0.0"
   },
   "devDependencies": {
-    "release-it": "12.5.0"
+    "release-it": "12.3.6"
   }
 }
