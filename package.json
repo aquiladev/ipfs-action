@@ -4,8 +4,7 @@
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-it --no-npm.publish --github.release -V"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -28,8 +27,5 @@
   "dependencies": {
     "@actions/core": "1.2.2",
     "ipfs-http-client": "42.0.0"
-  },
-  "devDependencies": {
-    "release-it": "12.3.6"
   }
 }
