@@ -12,7 +12,7 @@ IPFS host. Default `"cloudflare-ipfs.com"`
 
 ### `port`
 
-IPFS port'. Default `"443"`
+IPFS port. Default `"443"`
 
 ### `protocol`
 
