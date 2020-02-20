@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const uploader = require('../uploader');
+const uploader = require('./uploader');
 
 try {
   const path = core.getInput('path');
