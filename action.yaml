@@ -22,7 +22,7 @@ inputs:
   verbose:
     description: 'Level of verbosity'
     required: false
-    default: false
+    default: 'false'
 outputs:
   hash:
     description: 'IPFS root's hash'
