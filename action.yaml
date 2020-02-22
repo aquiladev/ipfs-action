@@ -19,10 +19,6 @@ inputs:
     description: 'IPFS host's protocol'
     required: false
     default: 'https'
-  verbose:
-    description: 'Level of verbosity'
-    required: false
-    default: 'false'
 outputs:
   hash:
     description: 'IPFS root's hash'
