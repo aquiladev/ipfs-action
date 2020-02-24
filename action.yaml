@@ -12,11 +12,11 @@ inputs:
     required: false
     default: 'ipfs.komputing.org'
   port:
-    description: 'IPFS host's port'
+    description: 'IPFS host`s port'
     required: false
     default: '443'
   protocol:
-    description: 'IPFS host's protocol'
+    description: 'IPFS host`s protocol'
     required: false
     default: 'https'
   verbose:
@@ -25,7 +25,7 @@ inputs:
     default: false
 outputs:
   hash:
-    description: 'IPFS root's hash'
+    description: 'IPFS root`s hash'
 runs:
   using: 'node12'
   main: 'index.js'
