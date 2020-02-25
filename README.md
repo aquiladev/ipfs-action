@@ -8,11 +8,11 @@
 
 ### `host`
 
-IPFS host. Default `ipfs.komputing.org`
+IPFS host. Default `ipfs.infura.io`
 
 ### `port`
 
-IPFS host's port. Default `443`
+IPFS host's port. Default `5001`
 
 ### `protocol`
 

@@ -10,11 +10,11 @@ inputs:
   host:
     description: 'IPFS host'
     required: false
-    default: 'ipfs.komputing.org'
+    default: 'ipfs.infura.io'
   port:
     description: 'IPFS host`s port'
     required: false
-    default: '443'
+    default: '5001'
   protocol:
     description: 'IPFS host`s protocol'
     required: false
