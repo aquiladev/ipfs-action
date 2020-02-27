@@ -5,7 +5,7 @@ module.exports = {
   async upload({ host, port, protocol, path, verbose }) {
     const root = fsPath.basename(path);
     const ipfs = IpfsHttpClient({ host, port, protocol });
-    const source = await ipfs.addFromFs(path, { recursive: true, pin: true });
+    const source = await ipfs.addFromFs(path, { recursive: true, pin: true, timeout: 20000 });
 
     let rootHash;
     for (const file of source) {
