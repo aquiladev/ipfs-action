@@ -4,7 +4,7 @@
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint index.js && jest"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,15 @@
   "dependencies": {
     "@actions/core": "1.2.2",
     "@actions/github": "2.1.0",
+    "@octokit/rest": "16.17.0",
     "form-data": "2.5.1",
     "ipfs-http-client": "35.1.1"
-  }
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "jest": "25.1.0"
+  },
+  "eslintIgnore": [
+    "*.test.js"
+  ]
 }
