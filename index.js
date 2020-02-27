@@ -4,7 +4,7 @@ const github = require('@actions/github');
 const uploader = require('./uploader');
 
 async function run() {
-  try {
+  // try {
     const path = core.getInput('path');
     const host = core.getInput('host');
     const port = core.getInput('port');
@@ -22,10 +22,10 @@ async function run() {
     }
 
     console.log('Upload to IPFS finished successfully', hash);
-  } catch (error) {
-    core.error(error);
-    core.setFailed(error.message);
-  }
+  // } catch (error) {
+  //   core.error(error);
+  //   core.setFailed(error.message);
+  // }
 }
 
 run()
