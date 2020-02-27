@@ -9,9 +9,10 @@ async function run() {
     const host = core.getInput('host');
     const port = core.getInput('port');
     const protocol = core.getInput('protocol');
+    const timeout = core.getInput('timeout');
     const verbose = (core.getInput('verbose') === 'true');
 
-    const options = { host, port, protocol, path, verbose };
+    const options = { host, port, protocol, path, timeout, verbose };
     const hash = await uploader.upload(options);
     core.setOutput('hash', hash);
 

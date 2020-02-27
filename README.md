@@ -18,6 +18,10 @@ IPFS host's port. Default `5001`
 
 IPFS host's protocol. Default `https`
 
+### `timeout`
+
+Request timeout. Default `60000` (1 minute)
+
 ### `verbose`
 
 Level of verbosity [`false` - quiet, `true` - verbose]. Default `false`

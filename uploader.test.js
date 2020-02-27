@@ -5,6 +5,7 @@ const options = {
   host: 'ipfs.infura.io',
   port: 5001,
   protocol: 'https',
+  timeout: 1000,
   verbose: false
 };
 

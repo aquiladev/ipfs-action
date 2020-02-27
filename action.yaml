@@ -19,6 +19,10 @@ inputs:
     description: 'IPFS protocol'
     required: false
     default: 'https'
+  timeout:
+    description: 'Request timeout'
+    required: false
+    default: '60000'
   verbose:
     description: 'Level of verbosity'
     required: false
