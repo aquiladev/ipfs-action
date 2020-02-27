@@ -27,6 +27,7 @@
   "dependencies": {
     "@actions/core": "1.2.2",
     "@actions/github": "2.1.0",
+    "form-data": "2.5.1",
     "ipfs-http-client": "35.1.1"
   }
 }
