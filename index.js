@@ -8,9 +8,10 @@ try {
   const host = core.getInput('host');
   const port = core.getInput('port');
   const protocol = core.getInput('protocol');
+  const timeout = core.getInput('timeout');
   const verbose = (core.getInput('verbose') === 'true');
 
-  uploader.upload(host, port, protocol, path, verbose)
+  uploader.upload(host, port, protocol, path, timeout, verbose)
     .then(hash => {
       core.setOutput('hash', hash);
 

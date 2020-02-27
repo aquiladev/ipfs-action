@@ -1,20 +1,29 @@
 const IpfsHttpClient = require('ipfs-http-client');
+const fsPath = require("path");
 const { globSource } = IpfsHttpClient;
 
 module.exports = {
-  async upload(host, port, protocol, path, verbose) {
-    const ipfs = IpfsHttpClient({ host, port, protocol });
+  async upload(host, port, protocol, path, timeout, verbose) {
+    const root = fsPath.basename(path);
+    const ipfs = IpfsHttpClient({ host, port, protocol, timeout });
 
     const source = ipfs.add(globSource(path, { recursive: true }), { pin: true });
 
-    let root;
+    let rootHash;
     for await (const file of source) {
-      root = file.cid.toString()
-
       if (verbose)
         console.log(file.path, file.cid.toString())
+
+      if (root === file.path) {
+        rootHash = file.cid.toString();
+        break;
+      }
     }
 
-    return root;
+    if (!rootHash) {
+      throw new Error('Content hash is not found.');
+    }
+
+    return rootHash;
   }
 }
