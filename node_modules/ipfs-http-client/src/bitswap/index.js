@@ -1,13 +1,7 @@
 'use strict'
 
-const moduleConfig = require('../utils/module-config')
-
-module.exports = (arg) => {
-  const send = moduleConfig(arg)
-
-  return {
-    wantlist: require('./wantlist')(send),
-    stat: require('./stat')(send),
-    unwant: require('./unwant')(send)
-  }
-}
+module.exports = config => ({
+  wantlist: require('./wantlist')(config),
+  stat: require('./stat')(config),
+  unwant: require('./unwant')(config)
+})

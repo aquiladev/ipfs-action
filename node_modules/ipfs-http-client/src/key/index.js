@@ -1,16 +1,10 @@
 'use strict'
 
-const moduleConfig = require('../utils/module-config')
-
-module.exports = (arg) => {
-  const send = moduleConfig(arg)
-
-  return {
-    gen: require('./gen')(send),
-    list: require('./list')(send),
-    rename: require('./rename')(send),
-    rm: require('./rm')(send),
-    export: require('./export')(send),
-    import: require('./import')(send)
-  }
-}
+module.exports = config => ({
+  gen: require('./gen')(config),
+  list: require('./list')(config),
+  rename: require('./rename')(config),
+  rm: require('./rm')(config),
+  export: require('./export')(config),
+  import: require('./import')(config)
+})

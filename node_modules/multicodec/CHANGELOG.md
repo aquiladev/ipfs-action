@@ -1,3 +1,8 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/multiformats/js-multicodec/compare/v0.5.7...v1.0.0) (2019-12-23)
+
+
+
 <a name="0.5.7"></a>
 ## [0.5.7](https://github.com/multiformats/js-multicodec/compare/v0.5.6...v0.5.7) (2019-12-22)
 

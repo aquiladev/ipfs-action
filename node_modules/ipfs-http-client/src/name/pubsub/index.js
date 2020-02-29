@@ -1,7 +1,7 @@
 'use strict'
 
-module.exports = (send) => ({
-  cancel: require('./cancel')(send),
-  state: require('./state')(send),
-  subs: require('./subs')(send)
+module.exports = config => ({
+  cancel: require('./cancel')(config),
+  state: require('./state')(config),
+  subs: require('./subs')(config)
 })

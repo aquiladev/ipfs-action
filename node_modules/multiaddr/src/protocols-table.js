@@ -41,13 +41,12 @@ Protocols.table = [
   [301, 0, 'udt'],
   [302, 0, 'utp'],
   [400, V, 'unix', false, 'path'],
-  // `p2p` is the preferred name for 421
-  [421, V, 'p2p'],
-  // `ipfs` has been added after `p2p` so that it is used by default.
-  // The reason for this is to provide better backwards support for
-  // code bases that do not yet support the `p2p` proto name. Eventually
-  // `p2p` should become the default.
+  // `ipfs` is added before `p2p` for legacy support.
+  // All text representations will default to `p2p`, but `ipfs` will
+  // still be supported
   [421, V, 'ipfs'],
+  // `p2p` is the preferred name for 421, and is now the default
+  [421, V, 'p2p'],
   [443, 0, 'https'],
   [444, 96, 'onion'],
   [445, 296, 'onion3'],

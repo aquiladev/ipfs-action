@@ -1,53 +1,24 @@
 'use strict'
 
-const promisify = require('promisify-es6')
-const { DAGLink } = require('ipld-dag-pb')
+const { Buffer } = require('buffer')
 const CID = require('cids')
-const LRU = require('lru-cache')
-const lruOptions = {
-  max: 128
-}
+const { DAGLink } = require('ipld-dag-pb')
+const configure = require('../lib/configure')
 
-const cache = new LRU(lruOptions)
+module.exports = configure(({ ky }) => {
+  return async (cid, options) => {
+    options = options || {}
 
-module.exports = (send) => {
-  return promisify((cid, options, callback) => {
-    if (typeof options === 'function') {
-      callback = options
-      options = {}
-    }
-    if (!options) {
-      options = {}
-    }
+    const searchParams = new URLSearchParams(options.searchParams)
+    searchParams.set('arg', `${Buffer.isBuffer(cid) ? new CID(cid) : cid}`)
 
-    try {
-      cid = new CID(cid)
-    } catch (err) {
-      return callback(err)
-    }
+    const res = await ky.post('object/links', {
+      timeout: options.timeout,
+      signal: options.signal,
+      headers: options.headers,
+      searchParams
+    }).json()
 
-    const node = cache.get(cid.toString())
-
-    if (node) {
-      return callback(null, node.links)
-    }
-
-    send({
-      path: 'object/links',
-      args: cid.toString()
-    }, (err, result) => {
-      if (err) {
-        return callback(err)
-      }
-
-      let links = []
-
-      if (result.Links) {
-        links = result.Links.map((l) => {
-          return new DAGLink(l.Name, l.Size, l.Hash)
-        })
-      }
-      callback(null, links)
-    })
-  })
-}
+    return (res.Links || []).map(l => new DAGLink(l.Name, l.Size, l.Hash))
+  }
+})

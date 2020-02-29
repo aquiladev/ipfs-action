@@ -1,17 +1,11 @@
 'use strict'
 
-const moduleConfig = require('../utils/module-config')
-
-module.exports = (arg) => {
-  const send = moduleConfig(arg)
-
-  return {
-    get: require('./get')(send),
-    put: require('./put')(send),
-    findProvs: require('./findprovs')(send),
-    findPeer: require('./findpeer')(send),
-    provide: require('./provide')(send),
-    // find closest peerId to given peerId
-    query: require('./query')(send)
-  }
-}
+module.exports = config => ({
+  get: require('./get')(config),
+  put: require('./put')(config),
+  findProvs: require('./find-provs')(config),
+  findPeer: require('./find-peer')(config),
+  provide: require('./provide')(config),
+  // find closest peerId to given peerId
+  query: require('./query')(config)
+})

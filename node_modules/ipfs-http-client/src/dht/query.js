@@ -1,41 +1,35 @@
 'use strict'
 
-const promisify = require('promisify-es6')
-const streamToValueWithTransformer = require('../utils/stream-to-value-with-transformer')
+const CID = require('cids')
+const ndjson = require('iterable-ndjson')
+const multiaddr = require('multiaddr')
+const toIterable = require('stream-to-it/source')
+const configure = require('../lib/configure')
+const toCamel = require('../lib/object-to-camel')
 
-const PeerId = require('peer-id')
-const PeerInfo = require('peer-info')
+module.exports = configure(({ ky }) => {
+  return async function * query (peerId, options) {
+    options = options || {}
 
-module.exports = (send) => {
-  return promisify((peerId, opts, callback) => {
-    if (typeof opts === 'function' && !callback) {
-      callback = opts
-      opts = {}
-    }
+    const searchParams = new URLSearchParams(options.searchParams)
+    searchParams.set('arg', `${Buffer.isBuffer(peerId) ? new CID(peerId) : peerId}`)
+    if (options.verbose != null) searchParams.set('verbose', options.verbose)
 
-    // opts is the real callback --
-    // 'callback' is being injected by promisify
-    if (typeof opts === 'function' && typeof callback === 'function') {
-      callback = opts
-      opts = {}
-    }
-
-    const handleResult = (res, callback) => {
-      const peerIds = res.map((r) => (new PeerInfo(PeerId.createFromB58String(r.ID))))
-
-      callback(null, peerIds)
-    }
-
-    send({
-      path: 'dht/query',
-      args: peerId,
-      qs: opts
-    }, (err, result) => {
-      if (err) {
-        return callback(err)
-      }
-
-      streamToValueWithTransformer(result, handleResult, callback)
+    const res = await ky.post('dht/query', {
+      timeout: options.timeout,
+      signal: options.signal,
+      headers: options.headers,
+      searchParams
     })
-  })
-}
+
+    for await (let message of ndjson(toIterable(res.body))) {
+      message = toCamel(message)
+      message.id = new CID(message.id)
+      message.responses = (message.responses || []).map(({ ID, Addrs }) => ({
+        id: ID,
+        addrs: (Addrs || []).map(a => multiaddr(a))
+      }))
+      yield message
+    }
+  }
+})

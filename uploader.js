@@ -1,22 +1,20 @@
-const core = require('@actions/core');
 const IpfsHttpClient = require('ipfs-http-client');
 const fsPath = require("path");
+const { globSource } = IpfsHttpClient;
 
 module.exports = {
   async upload({ host, port, protocol, path, timeout, verbose }) {
-    core.warning(`TIMEOUT ${timeout}`)
     const root = fsPath.basename(path);
-    const ipfs = IpfsHttpClient({ host, port, protocol });
-    const source = await ipfs.addFromFs(path, { recursive: true, pin: true, timeout })
-      .catch(error => { throw error; });
+    const ipfs = IpfsHttpClient({ host, port, protocol, timeout });
+    const source = await ipfs.add(globSource(path, { recursive: true }), { pin: true });
 
     let rootHash;
-    for (const file of source) {
+    for await (const file of source) {
       if (verbose)
-        console.log(file.path, file.hash.toString())
+        console.log(file.path, file.cid.toString())
 
       if (root === file.path) {
-        rootHash = file.hash.toString();
+        rootHash = file.cid.toString();
       }
     }
 

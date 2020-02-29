@@ -1,6 +1,6 @@
 'use strict'
 
-const DAGLink = require('./index')
+const DAGLink = require('./dagLink')
 
 function createDagLinkFromB58EncodedHash (link) {
   return new DAGLink(

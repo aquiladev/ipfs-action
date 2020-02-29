@@ -1,76 +1,51 @@
 'use strict'
-/* global self */
 
-const isIPFS = require('is-ipfs')
 const { Buffer } = require('buffer')
 const CID = require('cids')
 const multiaddr = require('multiaddr')
 const multibase = require('multibase')
 const multicodec = require('multicodec')
 const multihash = require('multihashes')
-const PeerId = require('peer-id')
-const PeerInfo = require('peer-info')
-const loadCommands = require('./utils/load-commands')
-const getConfig = require('./utils/default-config')
-const sendRequest = require('./utils/send-request')
+const globSource = require('ipfs-utils/src/files/glob-source')
+const urlSource = require('ipfs-utils/src/files/url-source')
 
-function ipfsClient (hostOrMultiaddr, port, userOptions) {
-  // convert all three params to objects that we can merge.
-  let options = {}
-
-  if (!hostOrMultiaddr) {
-    // autoconfigure host and port in browser
-    if (typeof self !== 'undefined') {
-      options = urlToOptions(self.location)
-    }
-  } else if (multiaddr.isMultiaddr(hostOrMultiaddr)) {
-    options = maToOptions(hostOrMultiaddr)
-  } else if (typeof hostOrMultiaddr === 'object') {
-    options = hostOrMultiaddr
-  } else if (typeof hostOrMultiaddr === 'string') {
-    if (hostOrMultiaddr[0] === '/') {
-      // throws if multiaddr is malformed or can't be converted to a nodeAddress
-      options = maToOptions(multiaddr(hostOrMultiaddr))
-    } else {
-      // hostOrMultiaddr is domain or ip address as a string
-      options.host = hostOrMultiaddr
-    }
-  }
-
-  if (port && typeof port !== 'object') {
-    port = { port: port }
-  }
-
-  const config = Object.assign(getConfig(), options, port, userOptions)
-  const requestAPI = sendRequest(config)
-  const cmds = loadCommands(requestAPI, config)
-  cmds.send = requestAPI
-
-  return cmds
-}
-
-function maToOptions (multiaddr) {
-  // ma.nodeAddress() throws if multiaddr can't be converted to a nodeAddress
-  const nodeAddr = multiaddr.nodeAddress()
-  const protos = multiaddr.protos()
-  // only http and https are allowed as protocol,
-  // anything else will be replaced with http
-  const exitProtocol = protos[protos.length - 1].name
+function ipfsClient (config) {
   return {
-    host: nodeAddr.address,
-    port: nodeAddr.port,
-    protocol: exitProtocol.startsWith('http') ? exitProtocol : 'http'
+    add: require('./add')(config),
+    bitswap: require('./bitswap')(config),
+    block: require('./block')(config),
+    bootstrap: require('./bootstrap')(config),
+    cat: require('./cat')(config),
+    commands: require('./commands')(config),
+    config: require('./config')(config),
+    dag: require('./dag')(config),
+    dht: require('./dht')(config),
+    diag: require('./diag')(config),
+    dns: require('./dns')(config),
+    files: require('./files')(config),
+    get: require('./get')(config),
+    getEndpointConfig: require('./get-endpoint-config')(config),
+    id: require('./id')(config),
+    key: require('./key')(config),
+    log: require('./log')(config),
+    ls: require('./ls')(config),
+    mount: require('./mount')(config),
+    name: require('./name')(config),
+    object: require('./object')(config),
+    pin: require('./pin')(config),
+    ping: require('./ping')(config),
+    pubsub: require('./pubsub')(config),
+    refs: require('./refs')(config),
+    repo: require('./repo')(config),
+    resolve: require('./resolve')(config),
+    stats: require('./stats')(config),
+    stop: require('./stop')(config),
+    shutdown: require('./stop')(config),
+    swarm: require('./swarm')(config),
+    version: require('./version')(config)
   }
 }
 
-function urlToOptions (url) {
-  return {
-    host: url.hostname,
-    port: url.port || (url.protocol.startsWith('https') ? 443 : 80),
-    protocol: url.protocol.startsWith('http') ? url.protocol.split(':')[0] : 'http'
-  }
-}
+Object.assign(ipfsClient, { Buffer, CID, multiaddr, multibase, multicodec, multihash, globSource, urlSource })
 
 module.exports = ipfsClient
-
-Object.assign(module.exports, { isIPFS, Buffer, CID, multiaddr, multibase, multicodec, multihash, PeerId, PeerInfo })
