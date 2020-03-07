@@ -3,7 +3,6 @@ const all = require('it-all');
 const fsPath = require("path");
 const { globSource } = IpfsHttpClient;
 
-    const source = await ipfs.add(globSource(path, { recursive: true }), { pin: true });
 async function _upload(options, retry = 0) {
   const { host, port, protocol, path, timeout, verbose } = options;
 
