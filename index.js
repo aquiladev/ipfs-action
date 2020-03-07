@@ -29,4 +29,6 @@ async function run() {
   }
 }
 
-run()
+run();
+
+module.exports = run;

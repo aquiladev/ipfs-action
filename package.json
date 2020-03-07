@@ -28,7 +28,8 @@
     "@actions/core": "1.2.2",
     "@actions/github": "2.1.0",
     "@octokit/rest": "16.17.0",
-    "ipfs-http-client": "42.0.0"
+    "ipfs-http-client": "42.0.0",
+    "it-all": "1.0.1"
   },
   "devDependencies": {
     "eslint": "6.8.0",
