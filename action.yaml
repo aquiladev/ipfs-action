@@ -10,11 +10,11 @@ inputs:
   host:
     description: 'IPFS host'
     required: false
-    default: 'ipfs.infura.io'
+    default: 'ipfs.komputing.org'
   port:
     description: 'IPFS port'
     required: false
-    default: '5001'
+    default: 443
   protocol:
     description: 'IPFS protocol'
     required: false
@@ -22,7 +22,7 @@ inputs:
   timeout:
     description: 'Request timeout'
     required: false
-    default: '60000'
+    default: 60000
   verbose:
     description: 'Level of verbosity'
     required: false

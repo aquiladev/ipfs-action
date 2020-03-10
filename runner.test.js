@@ -1,9 +1,9 @@
-const run = require('./index');
+const run = require('./runner');
 
 jest.setTimeout(240000);
 
-describe.skip('index: Integration test', () => {
-  it('should upload data dir', async () => {
+describe('index: Integration test', () => {
+  it.skip('should upload data dir', async () => {
     process.env['INPUT_PATH'] = './data';
     process.env['INPUT_HOST'] = 'ipfs.infura.io';
     process.env['INPUT_PORT'] = 5001;

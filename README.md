@@ -1,36 +1,23 @@
 # ipfs-action
+IPFS upload action.
+
+<p align="center">
+  <img width="400" src="assets/ipfs-action.png" alt="ipfs action">
+</p>
 
 ## Inputs
-
-### `path`
-
-**Required** Directory's path to upload.
-
-### `host`
-
-IPFS host. Default `ipfs.infura.io`
-
-### `port`
-
-IPFS host's port. Default `5001`
-
-### `protocol`
-
-IPFS host's protocol. Default `https`
-
-### `timeout`
-
-Request timeout. Default `60000` (1 minute)
-
-### `verbose`
-
-Level of verbosity [`false` - quiet, `true` - verbose]. Default `false`
+Parameter     |Required |Description
+---           |---      |---
+`path`        |Yes      |Directory's path to upload.
+`host`        |No       |IPFS host. Default `ipfs.komputing.org`
+`port`        |No       |IPFS host's port. Default `443`
+`protocol`    |No       |IPFS host's protocol. Default `https`
+`timeout`     |No       |Request timeout. Default `60000` (1 minute)
+`verbose`     |No       |Level of verbosity [`false` - quiet, `true` - verbose]. Default `false`
 
 ## Outputs
 
-### `hash`
-
-IPFS root's hash.
+### `hash` - IPFS root's hash.
 
 ## Example usage
 

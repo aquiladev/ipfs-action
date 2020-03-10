@@ -9,8 +9,10 @@ async function _upload(options) {
 
   const root = fsPath.basename(path);
   const ipfs = IpfsHttpClient({ host, port, protocol, timeout });
+  const files = await all(globSource(path, { recursive: true })).catch((err) => { throw err; });
+  const source = await all(ipfs.add(files, { pin: true, timeout })).catch((err) => { throw err; });
 
-  for await (const file of ipfs.add(globSource(path, { recursive: true }), { pin: true, timeout })) {
+  for await (const file of source) {
     if (verbose)
       console.log(file.path, file.cid.toString())
 
