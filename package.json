@@ -16,7 +16,8 @@
     "action",
     "upload",
     "deploy",
-    "deployment"
+    "deployment",
+    "delivery"
   ],
   "author": "Sergii Bomko <aquila.ua@gmail.com>",
   "license": "MIT",

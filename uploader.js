@@ -1,6 +1,6 @@
 const IpfsHttpClient = require('ipfs-http-client');
 const all = require('it-all');
-const fsPath = require("path");
+const fsPath = require('path');
 const { globSource } = IpfsHttpClient;
 
 async function _upload(options) {
