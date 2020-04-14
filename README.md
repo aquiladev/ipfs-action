@@ -1,5 +1,5 @@
 # ipfs-action
-IPFS upload action.
+IPFS upload GitHub Action. It allows uploading DApps or content to IPFS in a GitHub pipeline.
 
 <p align="center">
   <img width="400" src="assets/ipfs-action.png" alt="ipfs action">
