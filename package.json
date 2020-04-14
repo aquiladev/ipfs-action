@@ -4,7 +4,8 @@
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
-    "test": "eslint index.js && jest"
+    "test": "jest",
+    "lint": "eslint --ext .js --max-warnings 0 ."
   },
   "repository": {
     "type": "git",
@@ -34,9 +35,15 @@
   },
   "devDependencies": {
     "eslint": "6.8.0",
+    "husky": "4.2.5",
     "jest": "25.1.0"
   },
   "eslintIgnore": [
     "*.test.js"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm prune --production && npm run lint"
+    }
+  }
 }
