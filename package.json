@@ -43,7 +43,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm prune --production && npm run lint"
+      "pre-commit": "npm run lint&& npm prune --production"
     }
   }
 }
