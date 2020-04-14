@@ -36,7 +36,8 @@
   },
   "devDependencies": {
     "eslint": "6.8.0",
-    "jest": "25.1.0"
+    "jest": "25.1.0",
+    "release-it": "13.5.2"
   },
   "eslintIgnore": [
     "*.test.js"

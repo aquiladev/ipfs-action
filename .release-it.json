@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "before:init": [
+      "npm run lint",
+      "npm run prune-prod"
+    ],
+    "after:git:release": "echo After git push, before github release",
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  },
+  "git": {
+    "requireUpstream": true,
+    "tagName": "v${version}"
+  },
+  "github": {
+    "release": true
+  }
+}
