@@ -14,5 +14,8 @@
   },
   "github": {
     "release": true
+  },
+  "npm": {
+    "publish": false
   }
 }

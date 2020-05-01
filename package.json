@@ -7,7 +7,7 @@
     "test": "jest",
     "lint": "eslint --max-warnings 0 **/*.js",
     "prune-prod": "npm prune --production",
-    "release": "release-it --no-npm"
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
