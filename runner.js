@@ -6,13 +6,14 @@ const uploader = require('./uploader');
 async function run() {
   try {
     const path = core.getInput('path');
+    const service = core.getInput('service');
     const host = core.getInput('host');
     const port = core.getInput('port');
     const protocol = core.getInput('protocol');
     const timeout = core.getInput('timeout');
     const verbose = (core.getInput('verbose') === 'true');
 
-    const options = { host, port, protocol, path, timeout, verbose };
+    const options = { host, service, port, protocol, path, timeout, verbose };
     const hash = await uploader.upload(options).catch((err) => { throw err; });
     core.setOutput('hash', hash);
 

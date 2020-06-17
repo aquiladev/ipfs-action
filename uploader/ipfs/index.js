@@ -3,7 +3,11 @@ const all = require('it-all');
 const fsPath = require('path');
 const { globSource } = IpfsHttpClient;
 
-async function _upload(options) {
+function validate() {
+  return true;
+}
+
+async function upload(options) {
   const { host, port, protocol, path, timeout, verbose } = options;
   let rootHash;
 
@@ -26,16 +30,7 @@ async function _upload(options) {
   return rootHash;
 }
 
-function upload(options) {
-  const { path } = options;
-
-  if (!path) {
-    throw new Error('Path is empty');
-  }
-
-  return _upload(options);
-}
-
 module.exports = {
+  validate,
   upload
 }

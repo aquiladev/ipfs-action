@@ -5,8 +5,12 @@ branding:
   color: 'green'
 inputs:
   path:
-    description: 'directory path to upload'
+    description: 'Directory path to upload'
     required: true
+  service:
+    description: 'Type of target service to upload. Supported services [ipfs]'
+    required: false
+    default: 'ipfs'
   host:
     description: 'IPFS host'
     required: false

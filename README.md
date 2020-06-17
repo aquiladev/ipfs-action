@@ -9,6 +9,7 @@ IPFS upload GitHub Action. It allows uploading DApps or content to IPFS in a Git
 Parameter     |Required |Description
 ---           |---      |---
 `path`        |Yes      |Directory's path to upload.
+`service`     |No       |Type of target service to upload. Supported services [`ipfs`]. Default `ipfs`
 `host`        |No       |IPFS host. Default `ipfs.komputing.org`
 `port`        |No       |IPFS host's port. Default `443`
 `protocol`    |No       |IPFS host's protocol. Default `https`

@@ -1,7 +1,10 @@
-const uploader = require('./uploader');
+const uploader = require('./index');
+
+jest.setTimeout(240000);
 
 const options = {
   path: '',
+  service: 'ipfs',
   host: 'ipfs.infura.io',
   port: 5001,
   protocol: 'https',
@@ -14,7 +17,7 @@ test('throws ENOENT: no such file or directory', async () => {
     .rejects.toThrow();
 });
 
-test('throws multipart: NextPart: EOF', async () => {
+test.skip('throws multipart: NextPart: EOF', async () => {
   await expect(uploader.upload({ ...options, path: './data_empty' }))
     .rejects.toThrow('multipart: NextPart: EOF');
 });
