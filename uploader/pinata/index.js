@@ -32,7 +32,7 @@ async function upload(options) {
     source = fsPath.join(dir, source);
   }
 
-  return pinata.pinFromFS(source)
+  return pinata.pinFromFS(source, pinataOptions)
     .then((result) => {
       if (verbose) {
         console.log(result);
@@ -41,7 +41,6 @@ async function upload(options) {
       return result.IpfsHash;
     })
     .catch((err) => {
-      console.log(JSON.stringify(err), err, source)
       throw new Error(err);
     });
 }
