@@ -28,10 +28,10 @@ inputs:
     required: false
     default: 60000
   pinataKey:
-    description: 'Pinata Api Key. Require for pinata service'
+    description: 'Pinata Api Key. Required for pinata service'
     required: false
   pinataSecret:
-    description: 'Pinata Secret Api Key. Require for pinata service'
+    description: 'Pinata Secret Api Key. Required for pinata service'
     required: false
   verbose:
     description: 'Level of verbosity'
