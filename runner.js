@@ -10,10 +10,22 @@ async function run() {
     const host = core.getInput('host');
     const port = core.getInput('port');
     const protocol = core.getInput('protocol');
+    const pinataKey = core.getInput('pinataKey');
+    const pinataSecret = core.getInput('pinataSecret');
     const timeout = core.getInput('timeout');
     const verbose = (core.getInput('verbose') === 'true');
 
-    const options = { host, service, port, protocol, path, timeout, verbose };
+    const options = {
+      path,
+      service,
+      host,
+      port,
+      protocol,
+      pinataKey,
+      pinataSecret,
+      timeout,
+      verbose 
+    };
     const hash = await uploader.upload(options).catch((err) => { throw err; });
     core.setOutput('hash', hash);
 

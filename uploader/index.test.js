@@ -12,12 +12,26 @@ const options = {
   verbose: false
 };
 
-test('throws ENOENT: no such file or directory', async () => {
-  await expect(uploader.upload({ ...options, path: './1' }))
-    .rejects.toThrow();
+describe('ipfs', () => {
+  it('throws ENOENT: no such file or directory', async () => {
+    await expect(uploader.upload({ ...options, path: './1' }))
+      .rejects.toThrow();
+  });
+
+  it.skip('throws multipart: NextPart: EOF', async () => {
+    await expect(uploader.upload({ ...options, path: './data_empty' }))
+      .rejects.toThrow('multipart: NextPart: EOF');
+  });
 });
 
-test.skip('throws multipart: NextPart: EOF', async () => {
-  await expect(uploader.upload({ ...options, path: './data_empty' }))
-    .rejects.toThrow('multipart: NextPart: EOF');
+describe('pinata', () => {
+  it('throws error when pinataKey is empty', async () => {
+    await expect(uploader.upload({ ...options, path: './data', service: 'pinata' }))
+      .rejects.toThrow('PinataKey is empty');
+  });
+  
+  it('throws error when pinataSecret is empty', async () => {
+    await expect(uploader.upload({ ...options, path: './data', service: 'pinata', pinataKey: '.' }))
+      .rejects.toThrow('PinataSecret is empty');
+  });
 });

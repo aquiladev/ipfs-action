@@ -32,6 +32,7 @@
     "@actions/core": "1.2.2",
     "@actions/github": "2.1.0",
     "@octokit/rest": "16.17.0",
+    "@pinata/sdk": "1.1.10",
     "ipfs-http-client": "42.0.0",
     "it-all": "1.0.1"
   },

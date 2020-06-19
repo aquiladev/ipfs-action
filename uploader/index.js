@@ -1,12 +1,14 @@
 const ipfsUploader = require('./ipfs');
+const pinataUploader = require('./pinata');
 
 const services = {
-  ipfs: ipfsUploader
+  ipfs: ipfsUploader,
+  pinata: pinataUploader
 }
 
 function validate({ path, service }) {
   if (!path) {
-    throw new Error('Path is empty');
+    throw new Error('Path is empty'); 
   }
 
   if (!Object.keys(services).find(key => key === service)) {
@@ -18,7 +20,6 @@ function upload(options) {
   validate(options);
 
   const service = services[options.service];
-  service.validate(options);
   return service.upload(options);
 }
 
