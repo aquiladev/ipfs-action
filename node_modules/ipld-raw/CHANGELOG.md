@@ -1,3 +1,27 @@
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/ipld/js-ipld-raw/compare/v4.0.1...v5.0.0) (2020-05-06)
+
+
+### Bug Fixes
+
+* **package:** update cids to version 0.8.0 ([94e1db9](https://github.com/ipld/js-ipld-raw/commit/94e1db9))
+* issue [#16](https://github.com/ipld/js-ipld-raw/issues/16) - Throw error on resolving non-root path ([#43](https://github.com/ipld/js-ipld-raw/issues/43)) ([a5b53be](https://github.com/ipld/js-ipld-raw/commit/a5b53be))
+
+
+### BREAKING CHANGES
+
+* non-root paths throw an error
+
+Prior to this change a call to the resolver with a path like this:
+
+    resolver.resolve(blob, '/a/b/c/d')
+
+would just return the `blob` and an empty remainder path.
+
+With this commit, it will throw an Error as there is no such path.
+
+
+
 <a name="4.0.1"></a>
 ## [4.0.1](https://github.com/ipld/js-ipld-raw/compare/v4.0.0...v4.0.1) (2020-01-13)
 

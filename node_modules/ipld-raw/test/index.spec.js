@@ -23,9 +23,15 @@ describe('raw codec', () => {
   })
 
   it('resolver.resolve', () => {
-    const result = resolver.resolve(testBlob, 'a/b/c/d')
+    const result = resolver.resolve(testBlob, '/')
     expect(result.value.toString('hex')).to.equal(testData.toString('hex'))
     expect(result.remainderPath).to.equal('')
+  })
+
+  it('resolver.resolve throws on non-root path', () => {
+    expect(() => resolver.resolve(testBlob, 'a/b/c/d')).to.throw(
+      'Only the root path / may be resolved'
+    )
   })
 
   it('resolver.tree', () => {

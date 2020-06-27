@@ -14,12 +14,16 @@ module.exports = {
      * Always returns the raw data as value without any remainderPath.
      *
      * @param {Buffer} binaryBlob - Binary representation of a PB block
-     * @param {string} [path='/'] - Path that should be resolved (that value is ignored)
+     * @param {string} [path='/'] - Path that should be resolved.  Must be '/' or an exception is thrown
      * @returns {Object} result - Result of the path it it was resolved successfully
      * @returns {*} result.value - The raw data
      * @returns {string} result.remainderPath - An empty string
      */
     resolve: (binaryBlob, path) => {
+      if (path !== '/') {
+        throw new Error('Only the root path / may be resolved')
+      }
+
       return {
         value: binaryBlob,
         remainderPath: ''
