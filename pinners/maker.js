@@ -1,4 +1,4 @@
-module.exports = ({ name, builder, upload }) => async options => {
+module.exports = ({ builder, upload }) => async options => {
   const api = await builder(options);
 
   return {
