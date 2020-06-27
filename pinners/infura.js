@@ -1,7 +1,6 @@
 const IpfsHttpClient = require('ipfs-http-client');
 const all = require('it-all');
 const fsPath = require('path');
-const { globSource } = IpfsHttpClient;
 
 module.exports = {
   name: 'Infura',
@@ -19,7 +18,8 @@ module.exports = {
     const { path, timeout, verbose } = options;
     const root = fsPath.basename(path);
 
-    const source = await all(client.globSource(path, { recursive: true })).catch((err) => { throw err; });
+    const source = await all(api.globSource(path, { recursive: true }), { pin: true, timeout })
+      .catch((err) => { throw err; });
 
     let rootHash;
     for await (const file of source) {
