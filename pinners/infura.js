@@ -17,13 +17,11 @@ module.exports = {
   },
   upload: async (api, options) => {
     const { path, timeout, verbose } = options;
-    let rootHash;
-
     const root = fsPath.basename(path);
 
-    const files = await all(globSource(path, { recursive: true })).catch((err) => { throw err; });
-    const source = await all(api.add(files, { pin: true, timeout })).catch((err) => { throw err; });
+    const source = await all(client.globSource(path, { recursive: true })).catch((err) => { throw err; });
 
+    let rootHash;
     for await (const file of source) {
       if (verbose)
         console.log(file.path, file.cid.toString())
