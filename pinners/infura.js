@@ -4,11 +4,16 @@ const fsPath = require('path');
 const { globSource } = IpfsHttpClient;
 
 module.exports = {
-  name: 'IPFS',
+  name: 'Infura',
   builder: async (options) => {
-    const { host, port, protocol, timeout } = options;
+    const { timeout } = options;
 
-    return IpfsHttpClient({ host, port, protocol, timeout });
+    return IpfsHttpClient({
+      host: 'ipfs.infura.io',
+      port: '5001',
+      protocol: 'https',
+      timeout
+    });
   },
   upload: async (api, options) => {
     const { path, timeout, verbose } = options;

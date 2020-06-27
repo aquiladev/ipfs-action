@@ -8,35 +8,35 @@ inputs:
     description: 'Directory path to upload'
     required: true
   service:
-    description: 'Type of target service to upload. Supported services [ipfs]'
+    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura]'
     required: false
     default: 'ipfs'
-  host:
-    description: 'IPFS host'
-    required: false
-    default: 'ipfs.komputing.org'
-  port:
-    description: 'IPFS port'
-    required: false
-    default: 443
-  protocol:
-    description: 'IPFS protocol'
-    required: false
-    default: 'https'
   timeout:
     description: 'Request timeout'
     required: false
     default: 60000
-  pinataKey:
-    description: 'Pinata Api Key. Required for pinata service'
-    required: false
-  pinataSecret:
-    description: 'Pinata Secret Api Key. Required for pinata service'
-    required: false
   verbose:
     description: 'Level of verbosity'
     required: false
     default: false
+  host:
+    description: '[ipfs] IPFS host'
+    required: false
+    default: 'ipfs.komputing.org'
+  port:
+    description: '[ipfs] IPFS port'
+    required: false
+    default: 443
+  protocol:
+    description: '[ipfs] IPFS protocol'
+    required: false
+    default: 'https'
+  pinataKey:
+    description: '[pinata] Api Key. Required for pinata service'
+    required: false
+  pinataSecret:
+    description: '[pinata] Secret Api Key. Required for pinata service'
+    required: false
 outputs:
   hash:
     description: 'IPFS root hash'

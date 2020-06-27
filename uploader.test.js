@@ -24,6 +24,13 @@ describe('ipfs', () => {
   });
 });
 
+describe('infura', () => {
+  it('throws ENOENT: no such file or directory', async () => {
+    await expect(uploader.upload({ ...options, path: './1', service: 'infura' }))
+      .rejects.toThrow();
+  });
+});
+
 describe('pinata', () => {
   it('throws error when pinataKey is empty', async () => {
     await expect(uploader.upload({ ...options, path: './data', service: 'pinata' }))
