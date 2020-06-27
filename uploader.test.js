@@ -1,4 +1,4 @@
-const uploader = require('./index');
+const uploader = require('./uploader');
 
 jest.setTimeout(240000);
 
