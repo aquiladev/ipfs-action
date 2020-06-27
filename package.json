@@ -1,6 +1,6 @@
 {
   "name": "ipfs-action",
-  "version": "0.1.4-alpha.0",
+  "version": "0.1.4-beta.0",
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
