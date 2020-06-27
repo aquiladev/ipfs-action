@@ -1,4 +1,4 @@
-# protons
+# protons <!-- omit in toc -->
 
 [![Dependency Status](https://david-dm.org/ipfs/protons.svg?style=flat-square)](https://david-dm.org/ipfs/protons)
 [![Travis CI](https://travis-ci.org/ipfs/protons.svg?branch=master)](https://travis-ci.org/ipfs/protons)
@@ -7,7 +7,22 @@
 >
 > Forked from [protocol-buffers](https://github.com/mafintosh/protocol-buffers).
 
-```
+## Lead Maintainer <!-- omit in toc -->
+
+[Alex Potsides](https://github.com/achingbrain)
+
+## Table of Contents <!-- omit in toc -->
+
+- [Install](#install)
+- [Usage](#usage)
+- [Properties](#properties)
+- [Performance](#performance)
+- [Leveldb encoding compatibility](#leveldb-encoding-compatibility)
+- [License](#license)
+
+## Install
+
+```sh
 > npm install protons
 ```
 

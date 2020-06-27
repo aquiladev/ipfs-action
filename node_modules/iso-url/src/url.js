@@ -6,7 +6,7 @@ const { URL, URLSearchParams, format } = require('url');
 const defaultBase = 'http://localhost';
 
 class URLWithLegacySupport extends URL {
-    constructor(url, base = defaultBase) {
+    constructor(url = '', base = defaultBase) {
         super(url, base);
         this.path = this.pathname + this.search;
         this.auth =

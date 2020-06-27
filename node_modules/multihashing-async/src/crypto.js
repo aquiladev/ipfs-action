@@ -3,7 +3,7 @@
 const { Buffer } = require('buffer')
 const sha3 = require('js-sha3')
 const mur = require('murmurhash3js-revisited')
-const sha = require('./sha')
+const { factory: sha } = require('./sha')
 const { fromNumberTo32BitBuf } = require('./utils')
 
 // Note that although this function doesn't do any asynchronous work, we mark

@@ -1,5 +1,6 @@
 'use strict'
 
+const { Buffer } = require('buffer')
 const protons = require('protons')
 const proto = protons(require('./dag.proto'))
 const DAGLink = require('./dag-link/dagLink')

@@ -1,6 +1,7 @@
 'use strict'
 
 const withIs = require('class-is')
+const { Buffer } = require('buffer')
 const sortLinks = require('./sortLinks')
 const DAGLink = require('../dag-link/dagLink')
 const { serializeDAGNode } = require('../serialize.js')

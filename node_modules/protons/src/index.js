@@ -1,6 +1,7 @@
 'use strict'
 
 var schema = require('protocol-buffers-schema')
+const { Buffer } = require('buffer')
 var compile = require('./compile')
 
 var flatten = function (values) {

@@ -1,7 +1,7 @@
 'use strict'
 
 const CID = require('cids')
-
+const { Buffer } = require('buffer')
 const util = require('./util')
 
 /**

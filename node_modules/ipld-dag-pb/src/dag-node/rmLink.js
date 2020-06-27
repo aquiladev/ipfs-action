@@ -1,6 +1,7 @@
 'use strict'
 
 const CID = require('cids')
+const { Buffer } = require('buffer')
 
 const rmLink = (dagNode, nameOrCid) => {
   // It's a name

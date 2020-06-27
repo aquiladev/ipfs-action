@@ -27,7 +27,7 @@ var messages = protobuf(protoStr)
 tape('invalid message decode', function (t) {
   var didFail = false
   try {
-    messages.ABC.decode(Buffer.from([8, 182, 168, 235, 144, 178, 41]))
+    messages.ABC.decode(Uint8Array.from([8, 182, 168, 235, 144, 178, 41]))
   } catch (e) {
     didFail = true
   }

@@ -1,6 +1,6 @@
 const { Buffer } = require('buffer')
 const BufferList = require('bl/BufferList')
-const { S_IFMT, S_IFBLK, S_IFCHR, S_IFDIR, S_IFIFO, S_IFLNK } = require('fs-constants')
+const { S_IFMT, S_IFBLK, S_IFCHR, S_IFDIR, S_IFIFO, S_IFLNK } = require('iso-constants')
 const concat = require('it-concat')
 const Headers = require('./pack-headers')
 

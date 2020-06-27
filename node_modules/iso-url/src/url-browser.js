@@ -6,7 +6,7 @@ const defaultBase = self.location ?
 const URL = self.URL;
 
 class URLWithLegacySupport {
-    constructor(url, base = defaultBase) {
+    constructor(url = '', base = defaultBase) {
         this.super = new URL(url, base);
         this.path = this.pathname + this.search;
         this.auth =

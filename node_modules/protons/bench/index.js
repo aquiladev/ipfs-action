@@ -1,6 +1,6 @@
 'use strict'
 
-const Buffer = require('safe-buffer').Buffer
+const { Buffer } = require('buffer')
 const Benchmark = require('benchmark')
 if (typeof window !== 'undefined') {
   window.Benchmark = Benchmark
