@@ -1,5 +1,4 @@
 const IpfsHttpClient = require('ipfs-http-client');
-const all = require('it-all');
 const fsPath = require('path');
 const { globSource } = IpfsHttpClient;
 
@@ -19,8 +18,8 @@ module.exports = {
     const { path, timeout, verbose } = options;
     const root = fsPath.basename(path);
     
-    const files = await all(globSource(path, { recursive: true })).catch((err) => { throw err; });
-    const source = await all(api.add(files, { pin: true, timeout })).catch((err) => { throw err; });
+    const files = globSource(path, { recursive: true });
+    const source = api.add(files, { pin: true, timeout });
 
     let rootHash;
     for await (const file of source) {
