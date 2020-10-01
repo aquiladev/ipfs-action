@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/aquiladev/ipfs-action#readme",
   "dependencies": {
-    "@actions/core": "1.2.2",
+    "@actions/core": "1.2.6",
     "@actions/github": "2.1.0",
     "@octokit/rest": "16.17.0",
     "@pinata/sdk": "1.1.10",
