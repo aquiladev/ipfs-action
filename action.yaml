@@ -37,6 +37,9 @@ inputs:
   pinataSecret:
     description: '[pinata] Secret Api Key. Required for pinata service'
     required: false
+  pinataPinName:
+    description: '[pinata] Human name for pin'
+    required: false
 outputs:
   hash:
     description: 'IPFS root hash'
