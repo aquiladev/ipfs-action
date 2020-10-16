@@ -12,6 +12,7 @@ async function run() {
     const protocol = core.getInput('protocol');
     const pinataKey = core.getInput('pinataKey');
     const pinataSecret = core.getInput('pinataSecret');
+    const pinataPinName = core.getInput('pinataPinName');
     const timeout = core.getInput('timeout');
     const verbose = (core.getInput('verbose') === 'true');
 
@@ -23,6 +24,7 @@ async function run() {
       protocol,
       pinataKey,
       pinataSecret,
+      pinataPinName,
       timeout,
       verbose 
     };
