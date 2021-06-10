@@ -3,9 +3,9 @@ const { create, globSource } = require('ipfs-http-client');
 module.exports = {
   name: 'IPFS',
   builder: async (options) => {
-    const { host, port, protocol, timeout } = options;
+    const { host, port, protocol, timeout, headers } = options;
 
-    return create({ host, port, protocol, timeout });
+    return create({ host, port, protocol, timeout, headers });
   },
   upload: async (api, options) => {
     const { path, timeout, verbose } = options;
