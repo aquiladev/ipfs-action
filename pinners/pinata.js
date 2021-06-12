@@ -48,9 +48,6 @@ module.exports = {
         }
 
         return result.IpfsHash;
-      })
-      .catch((err) => {
-        throw new Error(err);
       });
   }
 }

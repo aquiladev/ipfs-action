@@ -4,6 +4,7 @@
  */
 'use strict'
 
+const { Buffer } = require('buffer')
 const constants = require('./constants')
 
 exports = module.exports = multibase

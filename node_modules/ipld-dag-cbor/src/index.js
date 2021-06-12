@@ -1,6 +1,18 @@
 'use strict'
 
-exports.util = require('./util.js')
-exports.resolver = require('./resolver.js')
-exports.codec = exports.util.codec
-exports.defaultHashAlg = exports.util.defaultHashAlg
+const util = require('./util.js')
+const resolver = require('./resolver.js')
+
+/**
+ * @typedef {import('interface-ipld-format').Format<object>} ObjectFormat
+ */
+
+/**
+ * @type {ObjectFormat}
+ */
+module.exports = {
+  util,
+  resolver,
+  codec: util.codec,
+  defaultHashAlg: util.defaultHashAlg
+}

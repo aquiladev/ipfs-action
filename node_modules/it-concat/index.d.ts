@@ -4,4 +4,4 @@ declare function concat (source: AsyncIterable<string>, options?: { type: 'strin
 declare function concat (source: AsyncIterable<Buffer | BufferList>, options?: { type: 'buffer' }): Promise<BufferList>
 declare function concat (source: AsyncIterable<Buffer | BufferList>, options: { type: 'string' }): Promise<string>
 
-export default concat
+export = concat

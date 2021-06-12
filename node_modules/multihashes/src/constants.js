@@ -20,6 +20,8 @@ exports.names = Object.freeze({
   'keccak-512': 0x1D,
   'murmur3-128': 0x22,
   'murmur3-32':  0x23,
+  'md4':         0xd4,
+  'md5':         0xd5,
   'blake2b-8':   0xb201,
   'blake2b-16':  0xb202,
   'blake2b-24':  0xb203,
@@ -363,6 +365,9 @@ exports.codes = Object.freeze({
 
   0x22: 'murmur3-128',
   0x23: 'murmur3-32',
+
+  0xd4: 'md4',
+  0xd5: 'md5',
 
   // blake2
   0xb201: 'blake2b-8',

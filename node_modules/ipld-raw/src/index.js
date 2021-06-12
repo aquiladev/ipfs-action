@@ -1,23 +1,31 @@
 'use strict'
 const CID = require('cids')
 const multihashing = require('multihashing-async')
+const { multihash } = multihashing
 const multicodec = require('multicodec')
 
-// binary resolver
+/**
+ * @typedef {import('cids').CIDVersion} CIDVersion
+ * @typedef {import('multihashing-async').multihash.HashCode} HashCode
+ * @typedef {import('interface-ipld-format').Format<Uint8Array>} RawFormat
+ */
+
+/**
+ * Binary resolver
+ *
+ * @type {RawFormat}
+ */
 module.exports = {
   codec: multicodec.RAW,
-  defaultHashAlg: multicodec.SHA2_256,
+  defaultHashAlg: multihash.names['sha2-256'],
   resolver: {
     /**
      * Resolves a path within a Raw block.
      *
      * Always returns the raw data as value without any remainderPath.
      *
-     * @param {Buffer} binaryBlob - Binary representation of a PB block
+     * @param {Uint8Array} binaryBlob - Binary representation of a PB block
      * @param {string} [path='/'] - Path that should be resolved.  Must be '/' or an exception is thrown
-     * @returns {Object} result - Result of the path it it was resolved successfully
-     * @returns {*} result.value - The raw data
-     * @returns {string} result.remainderPath - An empty string
      */
     resolve: (binaryBlob, path) => {
       if (path !== '/') {
@@ -33,38 +41,43 @@ module.exports = {
      * Return all available paths of a block.
      *
      * @generator
-     * @param {Buffer} binaryBlob - The raw data
-     * @returns {Object} - Finished generator with `done: true`
+     * @param {Uint8Array} binaryBlob - The raw data
      */
-    tree: (binaryBlob) => {
-      return {
-        done: true
-      }
+    async * tree (binaryBlob) {
+
     }
   },
   util: {
+    /**
+     * @param {Uint8Array} data
+     */
     deserialize: (data) => {
       return data
     },
+    /**
+     * @param {Uint8Array} data
+     */
     serialize: (data) => {
       return data
     },
     /**
      * Calculate the CID of the binary blob.
      *
-     * @param {Object} binaryBlob - Encoded IPLD Node
+     * @param {Uint8Array} binaryBlob - Encoded IPLD Node
      * @param {Object} [userOptions] - Options to create the CID
-     * @param {number} [userOptions.cidVersion=1] - CID version number
-     * @param {string} [UserOptions.hashAlg] - Defaults to the defaultHashAlg of the format
-     * @returns {Promise.<CID>}
+     * @param {CIDVersion} [userOptions.cidVersion=1] - CID version number
+     * @param {HashCode} [userOptions.hashAlg=multihash.names['sha2-256']] - Defaults to the defaultHashAlg of the format
      */
-    cid: async (binaryBlob, userOptions) => {
-      const defaultOptions = { cidVersion: 1, hashAlg: module.exports.defaultHashAlg }
-      const options = Object.assign(defaultOptions, userOptions)
+    cid: async (binaryBlob, userOptions = {}) => {
+      const options = {
+        cidVersion: userOptions.cidVersion == null ? 1 : userOptions.cidVersion,
+        hashAlg: userOptions.hashAlg == null ? module.exports.defaultHashAlg : userOptions.hashAlg
+      }
 
-      const multihash = await multihashing(binaryBlob, options.hashAlg)
-      const codecName = multicodec.print[module.exports.codec]
-      const cid = new CID(options.cidVersion, codecName, multihash)
+      const hashName = multihash.codes[options.hashAlg]
+      const hash = await multihashing(binaryBlob, hashName)
+      const codecName = multicodec.getNameFromCode(module.exports.codec)
+      const cid = new CID(options.cidVersion, codecName, hash)
 
       return cid
     }

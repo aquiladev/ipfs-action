@@ -1,7 +1,7 @@
 # it-tar
 
 [![build status](https://travis-ci.org/alanshaw/it-tar.svg?branch=master)](http://travis-ci.org/alanshaw/it-tar)
-[![dependencies Status](https://david-dm.org/alanshaw/it-tar/status.svg)](https://david-dm.org/alanshaw/it-tar)
+[![dependencies Status](https://status.david-dm.org/gh/alanshaw/it-tar.svg)](https://david-dm.org/alanshaw/it-tar)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > it-tar is a streaming tar parser and generator and nothing else. It operates purely using async iterables which means you can easily extract/parse tarballs without ever hitting the file system.

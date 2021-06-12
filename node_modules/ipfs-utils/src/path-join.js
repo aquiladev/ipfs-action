@@ -1,3 +1,3 @@
 'use strict'
-
-module.exports = require('path').join
+const { join } = require('path')
+module.exports = join

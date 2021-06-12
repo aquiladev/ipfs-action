@@ -1,9 +1,10 @@
 'use strict'
 
 const codec = require('./codec')
+const { Buffer } = require('buffer')
 const protocols = require('./protocols-table')
 const varint = require('varint')
-const bs58 = require('bs58')
+const multibase = require('multibase')
 const CID = require('cids')
 const withIs = require('class-is')
 const inspect = Symbol.for('nodejs.util.inspect.custom')
@@ -308,7 +309,7 @@ Multiaddr.prototype.getPeerId = function getPeerId () {
     // Get the last id
     b58str = tuples.pop()[1]
     // Get multihash, unwrap from CID if needed
-    b58str = bs58.encode(new CID(b58str).multihash)
+    b58str = multibase.encode('base58btc', new CID(b58str).multihash).toString().slice(1)
   } catch (e) {
     b58str = null
   }

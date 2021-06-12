@@ -4,7 +4,8 @@ const { Writable, pipeline } = require('stream')
 function pipe (...streams) {
   return new Promise((resolve, reject) => {
     pipeline(...streams, err => {
-      if (err) return reject(err)
+      // work around bug in node to make 'should end mid stream' test pass - https://github.com/nodejs/node/issues/23890
+      if (err && err.code !== 'ERR_STREAM_PREMATURE_CLOSE') return reject(err)
       resolve()
     })
   })

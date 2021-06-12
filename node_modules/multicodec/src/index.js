@@ -11,6 +11,7 @@
  */
 'use strict'
 
+const { Buffer } = require('buffer')
 const varint = require('varint')
 const intTable = require('./int-table')
 const codecNameToCodeVarint = require('./varint-table')

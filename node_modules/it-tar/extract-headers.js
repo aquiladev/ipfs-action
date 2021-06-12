@@ -1,14 +1,14 @@
 const { Buffer } = require('buffer')
 const BufferList = require('bl/BufferList')
 
-var ZERO_OFFSET = '0'.charCodeAt(0)
-var USTAR_MAGIC = Buffer.from('ustar\x00', 'binary')
-var GNU_MAGIC = Buffer.from('ustar\x20', 'binary')
-var GNU_VER = Buffer.from('\x20\x00', 'binary')
-var MAGIC_OFFSET = 257
-var VERSION_OFFSET = 263
+const ZERO_OFFSET = '0'.charCodeAt(0)
+const USTAR_MAGIC = Buffer.from('ustar\x00', 'binary')
+const GNU_MAGIC = Buffer.from('ustar\x20', 'binary')
+const GNU_VER = Buffer.from('\x20\x00', 'binary')
+const MAGIC_OFFSET = 257
+const VERSION_OFFSET = 263
 
-var clamp = function (index, len, defaultValue) {
+const clamp = function (index, len, defaultValue) {
   if (typeof index !== 'number') return defaultValue
   index = ~~index // Coerce to integer.
   if (index >= len) return len
@@ -18,7 +18,7 @@ var clamp = function (index, len, defaultValue) {
   return 0
 }
 
-var toType = function (flag) {
+const toType = function (flag) {
   switch (flag) {
     case 0:
       return 'file'
@@ -50,17 +50,17 @@ var toType = function (flag) {
   return null
 }
 
-var indexOf = function (block, num, offset, end) {
+const indexOf = function (block, num, offset, end) {
   for (; offset < end; offset++) {
     if (block.get(offset) === num) return offset
   }
   return end
 }
 
-var cksum = function (block) {
-  var sum = 8 * 32
-  for (var i = 0; i < 148; i++) sum += block.get(i)
-  for (var j = 156; j < 512; j++) sum += block.get(j)
+const cksum = function (block) {
+  let sum = 8 * 32
+  for (let i = 0; i < 148; i++) sum += block.get(i)
+  for (let j = 156; j < 512; j++) sum += block.get(j)
   return sum
 }
 
@@ -72,16 +72,16 @@ var cksum = function (block) {
 function parse256 (buf) {
   // first byte MUST be either 80 or FF
   // 80 for positive, FF for 2's comp
-  var positive
+  let positive
   if (buf.get(0) === 0x80) positive = true
   else if (buf.get(0) === 0xFF) positive = false
   else return null
 
   // build up a base-256 tuple from the least sig to the highest
-  var zero = false
-  var tuple = []
-  for (var i = buf.length - 1; i > 0; i--) {
-    var byte = buf.get(i)
+  let zero = false
+  const tuple = []
+  for (let i = buf.length - 1; i > 0; i--) {
+    const byte = buf.get(i)
     if (positive) tuple.push(byte)
     else if (zero && byte === 0) tuple.push(0)
     else if (zero) {
@@ -90,16 +90,16 @@ function parse256 (buf) {
     } else tuple.push(0xFF - byte)
   }
 
-  var sum = 0
-  var l = tuple.length
-  for (i = 0; i < l; i++) {
+  let sum = 0
+  const l = tuple.length
+  for (let i = 0; i < l; i++) {
     sum += tuple[i] * Math.pow(256, i)
   }
 
   return positive ? sum : -1 * sum
 }
 
-var decodeOct = function (val, offset, length) {
+const decodeOct = function (val, offset, length) {
   val = val.shallowSlice(offset, offset + length)
   offset = 0
 
@@ -109,14 +109,14 @@ var decodeOct = function (val, offset, length) {
   } else {
     // Older versions of tar can prefix with spaces
     while (offset < val.length && val.get(offset) === 32) offset++
-    var end = clamp(indexOf(val, 32, offset, val.length), val.length, val.length)
+    const end = clamp(indexOf(val, 32, offset, val.length), val.length, val.length)
     while (offset < end && val.get(offset) === 0) offset++
     if (end === offset) return 0
     return parseInt(val.shallowSlice(offset, end).toString(), 8)
   }
 }
 
-var decodeStr = function (val, offset, length, encoding) {
+const decodeStr = function (val, offset, length, encoding) {
   return val.shallowSlice(offset, indexOf(val, 0, offset, offset + length)).toString(encoding)
 }
 
@@ -127,16 +127,16 @@ exports.decodeLongPath = function (buf, encoding) {
 
 exports.decodePax = function (buf) {
   buf = BufferList.isBufferList(buf) ? buf : new BufferList(buf)
-  var result = {}
+  const result = {}
 
   while (buf.length) {
-    var i = 0
+    let i = 0
     while (i < buf.length && buf.get(i) !== 32) i++
-    var len = parseInt(buf.shallowSlice(0, i).toString(), 10)
+    const len = parseInt(buf.shallowSlice(0, i).toString(), 10)
     if (!len) return result
 
-    var b = buf.shallowSlice(i + 1, len - 1).toString()
-    var keyIndex = b.indexOf('=')
+    const b = buf.shallowSlice(i + 1, len - 1).toString()
+    const keyIndex = b.indexOf('=')
     if (keyIndex === -1) return result
     result[b.slice(0, keyIndex)] = b.slice(keyIndex + 1)
 
@@ -148,22 +148,22 @@ exports.decodePax = function (buf) {
 
 exports.decode = function (buf, filenameEncoding) {
   buf = BufferList.isBufferList(buf) ? buf : new BufferList(buf)
-  var typeflag = buf.get(156) === 0 ? 0 : buf.get(156) - ZERO_OFFSET
+  let typeflag = buf.get(156) === 0 ? 0 : buf.get(156) - ZERO_OFFSET
 
-  var name = decodeStr(buf, 0, 100, filenameEncoding)
-  var mode = decodeOct(buf, 100, 8)
-  var uid = decodeOct(buf, 108, 8)
-  var gid = decodeOct(buf, 116, 8)
-  var size = decodeOct(buf, 124, 12)
-  var mtime = decodeOct(buf, 136, 12)
-  var type = toType(typeflag)
-  var linkname = buf.get(157) === 0 ? null : decodeStr(buf, 157, 100, filenameEncoding)
-  var uname = decodeStr(buf, 265, 32)
-  var gname = decodeStr(buf, 297, 32)
-  var devmajor = decodeOct(buf, 329, 8)
-  var devminor = decodeOct(buf, 337, 8)
+  let name = decodeStr(buf, 0, 100, filenameEncoding)
+  const mode = decodeOct(buf, 100, 8)
+  const uid = decodeOct(buf, 108, 8)
+  const gid = decodeOct(buf, 116, 8)
+  const size = decodeOct(buf, 124, 12)
+  const mtime = decodeOct(buf, 136, 12)
+  const type = toType(typeflag)
+  const linkname = buf.get(157) === 0 ? null : decodeStr(buf, 157, 100, filenameEncoding)
+  const uname = decodeStr(buf, 265, 32)
+  const gname = decodeStr(buf, 297, 32)
+  const devmajor = decodeOct(buf, 329, 8)
+  const devminor = decodeOct(buf, 337, 8)
 
-  var c = cksum(buf)
+  const c = cksum(buf)
 
   // checksum is still initial value if header was null.
   if (c === 8 * 32) return null

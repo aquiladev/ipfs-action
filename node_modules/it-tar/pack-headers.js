@@ -1,17 +1,17 @@
 const { Buffer } = require('buffer')
 
-var alloc = Buffer.alloc
+const alloc = Buffer.alloc
 
-var ZEROS = '0000000000000000000'
-var SEVENS = '7777777777777777777'
-var ZERO_OFFSET = '0'.charCodeAt(0)
-var USTAR_MAGIC = Buffer.from('ustar\x00', 'binary')
-var USTAR_VER = Buffer.from('00', 'binary')
-var MASK = parseInt('7777', 8)
-var MAGIC_OFFSET = 257
-var VERSION_OFFSET = 263
+const ZEROS = '0000000000000000000'
+const SEVENS = '7777777777777777777'
+const ZERO_OFFSET = '0'.charCodeAt(0)
+const USTAR_MAGIC = Buffer.from('ustar\x00', 'binary')
+const USTAR_VER = Buffer.from('00', 'binary')
+const MASK = parseInt('7777', 8)
+const MAGIC_OFFSET = 257
+const VERSION_OFFSET = 263
 
-var toTypeflag = function (flag) {
+const toTypeflag = function (flag) {
   switch (flag) {
     case 'file':
       return 0
@@ -36,34 +36,34 @@ var toTypeflag = function (flag) {
   return 0
 }
 
-var cksum = function (block) {
-  var sum = 8 * 32
-  for (var i = 0; i < 148; i++) sum += block[i]
-  for (var j = 156; j < 512; j++) sum += block[j]
+const cksum = function (block) {
+  let sum = 8 * 32
+  for (let i = 0; i < 148; i++) sum += block[i]
+  for (let j = 156; j < 512; j++) sum += block[j]
   return sum
 }
 
-var encodeOct = function (val, n) {
+const encodeOct = function (val, n) {
   val = val.toString(8)
   if (val.length > n) return SEVENS.slice(0, n) + ' '
   else return ZEROS.slice(0, n - val.length) + val + ' '
 }
 
-var addLength = function (str) {
-  var len = Buffer.byteLength(str)
-  var digits = Math.floor(Math.log(len) / Math.log(10)) + 1
+const addLength = function (str) {
+  const len = Buffer.byteLength(str)
+  let digits = Math.floor(Math.log(len) / Math.log(10)) + 1
   if (len + digits >= Math.pow(10, digits)) digits++
 
   return (len + digits) + str
 }
 
 exports.encodePax = function (opts) { // TODO: encode more stuff in pax
-  var result = ''
+  let result = ''
   if (opts.name) result += addLength(' path=' + opts.name + '\n')
   if (opts.linkname) result += addLength(' linkpath=' + opts.linkname + '\n')
-  var pax = opts.pax
+  const pax = opts.pax
   if (pax) {
-    for (var key in pax) {
+    for (const key in pax) {
       result += addLength(' ' + key + '=' + pax[key] + '\n')
     }
   }
@@ -71,15 +71,15 @@ exports.encodePax = function (opts) { // TODO: encode more stuff in pax
 }
 
 exports.encode = function (opts) {
-  var buf = alloc(512)
-  var name = opts.name
-  var prefix = ''
+  const buf = alloc(512)
+  let name = opts.name
+  let prefix = ''
 
   if (opts.typeflag === 5 && name[name.length - 1] !== '/') name += '/'
   if (Buffer.byteLength(name) !== name.length) return null // utf-8
 
   while (Buffer.byteLength(name) > 100) {
-    var i = name.indexOf('/')
+    const i = name.indexOf('/')
     if (i === -1) return null
     prefix += prefix ? '/' + name.slice(0, i) : name.slice(0, i)
     name = name.slice(i + 1)

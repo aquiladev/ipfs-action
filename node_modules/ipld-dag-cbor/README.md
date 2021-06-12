@@ -1,4 +1,4 @@
-# js-ipld-dag-cbor
+# js-ipld-dag-cbor <!-- omit in toc -->
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/project-IPLD-blue.svg?style=flat-square)](http://github.com/ipld/ipld)
@@ -14,11 +14,11 @@
 
 > JavaScript implementation of the [IPLD spec](https://github.com/ipfs/specs/tree/master/ipld).
 
-## Lead Maintainer
+## Lead Maintainer <!-- omit in toc -->
 
 [Volker Mische](https://github.com/vmx)
 
-## Table of Contents
+## Table of Contents <!-- omit in toc -->
 
 - [Install](#install)
   - [npm](#npm)
@@ -27,6 +27,10 @@
   - [Use in a browser Using a script tag](#use-in-a-browser-using-a-script-tag)
 - [Usage](#usage)
 - [API](#api)
+  - [`dagCBOR.util.serialize(obj)`](#dagcborutilserializeobj)
+  - [`dagCBOR.util.deserialize(serialized)`](#dagcborutildeserializeserialized)
+  - [`dagCBOR.util.configureDecoder([options])`](#dagcborutilconfiguredecoderoptions)
+  - [`dagCBOR.util.cid(obj[, options,])`](#dagcborutilcidobj-options)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -73,13 +77,13 @@ const file = {
 }
 
 const serialized = dagCBOR.util.serialize(file)
-console.log(`Encoded as a ${serialized.length} byte Buffer`)
+console.log(`Encoded as a ${serialized.length} byte Uint8Array`)
 
 const node = dagCBOR.util.deserialize(serialized)
 console.log('Decoded as:', node)
 require('assert').deepEqual(node, file) // should match
 
-// → Encoded as a 22 byte Buffer
+// → Encoded as a 22 byte Uint8Array
 // → Decoded as: { name: 'hello.txt', size: 11 }
 ```
 
@@ -97,7 +101,7 @@ Returns the serialized node.
 
  Decodes an IPLD CBOR encoded representation, restoring any CBOR tags (id `42`) to CIDs.
 
-  - `serialized` (`Buffer` or `String`): a binary blob representing an IPLD CBOR encoded object.
+  - `serialized` (`Uint8Array` or `String`): a binary blob representing an IPLD CBOR encoded object.
 
 Returns the deserialized object.
 

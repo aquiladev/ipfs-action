@@ -1,7 +1,7 @@
 # it-reader
 
 [![Build Status](https://travis-ci.org/alanshaw/it-reader.svg?branch=master)](https://travis-ci.org/alanshaw/it-reader)
-[![dependencies Status](https://david-dm.org/alanshaw/it-reader/status.svg)](https://david-dm.org/alanshaw/it-reader)
+[![dependencies Status](https://status.david-dm.org/gh/alanshaw/it-reader.svg)](https://david-dm.org/alanshaw/it-reader)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Read an exact number of bytes from a binary (async) iterable

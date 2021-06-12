@@ -21,20 +21,23 @@
 
 ## Table of Contents
 
-- [Install](#install)
-  - [npm](#npm)
-- [Usage](#usage)
-  - [Node.js](#nodejs)
-    - [Example](#example)
-  - [Browser: Browserify, Webpack, other bundlers](#browser-browserify-webpack-other-bundlers)
-  - [Browser: `<script>` Tag](#browser-script-tag)
-- [API](#api)
-  - [Block](#block)
-    - [`new Block(data, cid)`](#new-blockdata-cid)
-    - [`block.data`](#blockdata)
-    - [`block.cid`](#blockcid)
-- [Contribute](#contribute)
-- [License](#license)
+- [IPLD Block JavaScript Implementation](#ipld-block-javascript-implementation)
+  - [Lead Maintainer](#lead-maintainer)
+  - [Table of Contents](#table-of-contents)
+  - [Install](#install)
+    - [npm](#npm)
+  - [Usage](#usage)
+    - [Node.js](#nodejs)
+      - [Example](#example)
+    - [Browser: Browserify, Webpack, other bundlers](#browser-browserify-webpack-other-bundlers)
+    - [Browser: `<script>` Tag](#browser-script-tag)
+  - [API](#api)
+    - [Block](#block)
+      - [`new Block(data, cid)`](#new-blockdata-cid)
+      - [`block.data`](#blockdata)
+      - [`block.cid`](#blockcid)
+  - [Contribute](#contribute)
+  - [License](#license)
 
 ## Install
 
@@ -56,9 +59,10 @@ const Block = require('ipld-block')
 
 ```js
 const Block = require('ipld-block')
+const encoder = new TextEncoder('utf8')
 
 // create a block
-const block = new Block(new Buffer('hello world'), cid)
+const block = new Block(encoder.encode('hello world'), cid)
 console.log(block.data.toString())
 ```
 
@@ -94,7 +98,7 @@ const Block = require('ipld-block')
 
 #### `new Block(data, cid)`
 
-- `data: Buffer`
+- `data: Uint8Array`
 
 Creates a new block with raw data `data`.
 

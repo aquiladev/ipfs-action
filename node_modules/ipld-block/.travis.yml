@@ -1,17 +1,28 @@
 language: node_js
+dist: bionic
 cache: npm
 stages:
   - check
   - test
   - cov
 
+branches:
+  only:
+  - master
+  - /^release\/.*$/
+
 node_js:
-  - '10'
+  - 'lts/*'
+  - 'node'
 
 os:
   - linux
   - osx
   - windows
+
+before_install:
+  # modules with pre-built binaries may not have deployed versions for bleeding-edge node so this lets us fall back to building from source
+  - npm install -g @mapbox/node-pre-gyp
 
 script: npx nyc -s npm run test:node -- --bail
 after_success: npx nyc report --reporter=text-lcov > coverage.lcov && npx codecov
@@ -20,7 +31,6 @@ jobs:
   include:
     - stage: check
       script:
-        - npx aegir commitlint --travis
         - npx aegir dep-check
         - npm run lint
 
@@ -28,13 +38,14 @@ jobs:
       name: chrome
       addons:
         chrome: stable
-      script: npx aegir test -t browser -t webworker
+      script:
+        - npx aegir test -t browser -t webworker
 
     - stage: test
       name: firefox
       addons:
         firefox: latest
-      script: npx aegir test -t browser -t webworker -- --browsers FirefoxHeadless
+      script: npx aegir test -t browser -t webworker -- --browser firefox
 
 notifications:
   email: false

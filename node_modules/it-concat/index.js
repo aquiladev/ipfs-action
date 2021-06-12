@@ -15,7 +15,7 @@ module.exports = async (source, options) => {
   let res, type
   for await (const chunk of source) {
     if (!res) {
-      type = options.type || typeof chunk === 'string' ? 'string' : 'buffer'
+      type = options.type || (typeof chunk === 'string' ? 'string' : 'buffer')
       res = TypeDefault[type]()
     }
 

@@ -1,4 +1,4 @@
-const Multiaddr = require('multiaddr')
+const { Multiaddr } = require('multiaddr')
 
 const reduceValue = (_, v) => v
 const tcpUri = (str, port, parts, opts) => {
@@ -44,7 +44,7 @@ const Reducers = {
 }
 
 module.exports = (multiaddr, opts) => {
-  const ma = Multiaddr(multiaddr)
+  const ma = new Multiaddr(multiaddr)
   const parts = multiaddr.toString().split('/').slice(1)
   return ma
     .tuples()

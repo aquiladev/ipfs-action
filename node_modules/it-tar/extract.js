@@ -128,7 +128,7 @@ module.exports = options => {
 
         // Incase the body was not consumed entirely...
         if (bytesRemaining) {
-          for await (const _ of body) {} // eslint-disable-line no-unused-vars
+          for await (const _ of body) {} // eslint-disable-line no-unused-vars,no-empty
         }
 
         await discardPadding(reader, header.size)

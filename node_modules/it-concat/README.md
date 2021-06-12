@@ -1,7 +1,7 @@
 # it-concat
 
 [![Build Status](https://travis-ci.org/alanshaw/it-concat.svg?branch=master)](https://travis-ci.org/alanshaw/it-concat)
-[![dependencies Status](https://david-dm.org/alanshaw/it-concat/status.svg)](https://david-dm.org/alanshaw/it-concat)
+[![dependencies Status](https://status.david-dm.org/gh/alanshaw/it-concat.svg)](https://david-dm.org/alanshaw/it-concat)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Concat all buffers/strings yielded from an async iterable into a single [`BufferList`](https://www.npmjs.com/package/bl)/`string`.

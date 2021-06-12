@@ -1,5 +1,17 @@
 'use strict';
 
+/**
+ * @typedef {{ [key: string]: any }} Extensions
+ * @typedef {Error} Err
+ * @property {string} message
+ */
+
+/**
+ *
+ * @param {Error} obj
+ * @param {Extensions} props
+ * @returns {Error & Extensions}
+ */
 function assign(obj, props) {
     for (const key in props) {
         Object.defineProperty(obj, key, {
@@ -12,6 +24,13 @@ function assign(obj, props) {
     return obj;
 }
 
+/**
+ *
+ * @param {any} err - An Error
+ * @param {string|Extensions} code - A string code or props to set on the error
+ * @param {Extensions} [props] - Props to set on the error
+ * @returns {Error & Extensions}
+ */
 function createError(err, code, props) {
     if (!err || typeof err === 'string') {
         throw new TypeError('Please pass an Error to err-code');
@@ -23,10 +42,10 @@ function createError(err, code, props) {
 
     if (typeof code === 'object') {
         props = code;
-        code = undefined;
+        code = '';
     }
 
-    if (code != null) {
+    if (code) {
         props.code = code;
     }
 
@@ -40,7 +59,10 @@ function createError(err, code, props) {
 
         ErrClass.prototype = Object.create(Object.getPrototypeOf(err));
 
-        return assign(new ErrClass(), props);
+        // @ts-ignore
+        const output = assign(new ErrClass(), props);
+
+        return output;
     }
 }
 

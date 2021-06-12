@@ -29,18 +29,16 @@
   },
   "homepage": "https://github.com/aquiladev/ipfs-action#readme",
   "dependencies": {
-    "@actions/core": "1.2.6",
-    "@actions/github": "2.1.0",
-    "@octokit/rest": "16.17.0",
-    "@pinata/sdk": "1.1.10",
-    "ipfs-http-client": "44.3.0",
-    "it-all": "1.0.1",
+    "@actions/core": "1.4.0",
+    "@actions/github": "5.0.0",
+    "@pinata/sdk": "1.1.23",
+    "ipfs-http-client": "50.1.1",
     "minimist": "1.2.5"
   },
   "devDependencies": {
     "eslint": "6.8.0",
-    "jest": "25.1.0",
-    "release-it": "13.6.7"
+    "jest": "27.0.4",
+    "release-it": "14.8.0"
   },
   "eslintIgnore": [
     "*.test.js"
