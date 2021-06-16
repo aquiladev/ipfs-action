@@ -31,7 +31,7 @@ async function run() {
       verbose 
     };
     const hash = await uploader.upload(options).catch((err) => { throw err; });
-    core.setOutput('hash', hash);
+    core.setOutput('hash', hash.toString());
 
     if (verbose) {
       // Get the JSON webhook payload for the event that triggered the workflow
