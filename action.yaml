@@ -31,6 +31,10 @@ inputs:
     description: '[ipfs] IPFS protocol'
     required: false
     default: 'https'
+  headers:
+    description: '[ipfs] IPFS headers as json object'
+    required: false
+    default: "{}"
   pinataKey:
     description: '[pinata] Api Key. Required for pinata service'
     required: false

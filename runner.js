@@ -10,6 +10,7 @@ async function run() {
     const host = core.getInput('host');
     const port = core.getInput('port');
     const protocol = core.getInput('protocol');
+    const headers = core.getInput('headers');
     const pinataKey = core.getInput('pinataKey');
     const pinataSecret = core.getInput('pinataSecret');
     const pinataPinName = core.getInput('pinataPinName');
@@ -22,6 +23,7 @@ async function run() {
       host,
       port,
       protocol,
+      headers: JSON.parse(headers),
       pinataKey,
       pinataSecret,
       pinataPinName,
