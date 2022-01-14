@@ -18,7 +18,8 @@ module.exports = {
     if (verbose) console.log(cid);
 
     if (key) {
-      await api.name.publish(cid, { key: key });
+      const ipns = await api.name.publish(cid, { key: key });
+      console.log(ipns);
     }
 
     return cid;
