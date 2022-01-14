@@ -1,6 +1,6 @@
 {
   "name": "ipfs-action",
-  "version": "0.2.0-alpha.0",
+  "version": "0.2.0-alpha",
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,8 @@
     "@actions/github": "5.0.0",
     "@pinata/sdk": "1.1.23",
     "ipfs-http-client": "50.1.1",
-    "minimist": "1.2.5"
+    "minimist": "1.2.5",
+    "peer-id": "^0.16.0"
   },
   "devDependencies": {
     "eslint": "8.6.0",
