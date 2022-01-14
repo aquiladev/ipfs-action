@@ -35,6 +35,9 @@ inputs:
     description: '[ipfs] IPFS headers as json object'
     required: false
     default: "{}"
+  key:
+    description: "[ipfs] IPNS key name. IPNS key will be published when the key parameter is provided. The key will be created if it does not exist"
+    required: false
   pinataKey:
     description: '[pinata] Api Key. Required for pinata service'
     required: false
@@ -46,7 +49,13 @@ inputs:
     required: false
 outputs:
   hash:
-    description: 'IPFS root hash'
+    description: 'IPFS CID'
+  cid:
+    description: 'IPFS CID'
+  ipfs:
+    description: 'IPFS CID'
+  ipns:
+    description: 'IPNS CID if applicable'
 runs:
   using: 'node12'
   main: 'index.js'

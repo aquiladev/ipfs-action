@@ -1,11 +1,11 @@
 {
   "name": "ipfs-action",
-  "version": "0.1.6",
+  "version": "0.2.0-alpha",
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint --max-warnings 0 **/*.js",
+    "lint": "eslint --max-warnings 0 runner.js uploader.js pinners/*.js",
     "prune-prod": "npm prune --production",
     "release": "release-it"
   },
@@ -33,14 +33,12 @@
     "@actions/github": "5.0.0",
     "@pinata/sdk": "1.1.23",
     "ipfs-http-client": "50.1.1",
-    "minimist": "1.2.5"
+    "minimist": "1.2.5",
+    "peer-id": "^0.16.0"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
+    "eslint": "8.6.0",
     "jest": "27.0.4",
     "release-it": "14.8.0"
-  },
-  "eslintIgnore": [
-    "*.test.js"
-  ]
+  }
 }
