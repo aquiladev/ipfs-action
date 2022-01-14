@@ -18,6 +18,14 @@ module.exports = {
     if (verbose) console.log(cid);
 
     if (key) {
+      const keys = await api.key.list();
+      console.log(keys);
+      if (!keys.find((k) => k.name === key)) {
+        await api.key.gen(key, {
+          type: "rsa",
+          size: 2048,
+        });
+      }
       const ipns = await api.name.publish(cid, { key: key });
       console.log(ipns);
     }
