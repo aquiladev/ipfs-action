@@ -33,13 +33,13 @@ module.exports = {
       }
 
       const res = await api.name.publish(cid, { key });
-      console.log("ipns", res, PeerId.parse(_key.id).toString());
+      console.log("ipns", res, PeerId.parse(_key.id).toB58String());
     }
 
     return {
       cid: cid.toString(),
       ipfs: cid.toString(),
-      ipns: _key && PeerId.parse(_key.id).toString(),
+      ipns: _key && PeerId.parse(_key.id).toB58String(),
     };
   },
 };
