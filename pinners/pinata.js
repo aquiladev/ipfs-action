@@ -46,7 +46,10 @@ module.exports = {
         console.log(result);
       }
 
-      return result.IpfsHash;
+      return {
+        cid: result.IpfsHash.toString(),
+        ipfs: result.IpfsHash.toString(),
+      };
     });
   },
 };

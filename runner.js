@@ -32,10 +32,13 @@ async function run() {
       timeout,
       verbose,
     };
-    const hash = await uploader.upload(options).catch((err) => {
+    const result = await uploader.upload(options).catch((err) => {
       throw err;
     });
-    core.setOutput("hash", hash.toString());
+    core.setOutput("hash", result.ipfs);
+    core.setOutput("cid", result.cid);
+    core.setOutput("ipfs", result.ipfs);
+    core.setOutput("ipns", result.ipns);
 
     if (verbose) {
       // Get the JSON webhook payload for the event that triggered the workflow
@@ -43,7 +46,7 @@ async function run() {
       console.log(`The event payload: ${payload}`);
     }
 
-    console.log("Upload to IPFS finished successfully", hash);
+    console.log("Upload to IPFS finished successfully", result);
   } catch (error) {
     core.setFailed(error.message);
     throw error;

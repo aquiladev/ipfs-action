@@ -22,6 +22,9 @@ module.exports = {
 
     if (verbose) console.log(cid);
 
-    return cid;
+    return {
+      cid: cid.toString(),
+      ipfs: cid.toString(),
+    };
   },
 };

@@ -18,11 +18,12 @@ module.exports = {
 
     if (verbose) console.log(cid);
 
+    let _key;
     if (key) {
       const keys = await api.key.list();
       console.log("keys", keys);
 
-      let _key = keys.find((k) => k.name === key);
+      _key = keys.find((k) => k.name === key);
       if (!_key) {
         _key = await api.key.gen(key, {
           type: "rsa",
@@ -31,10 +32,14 @@ module.exports = {
         console.log("gen", _key);
       }
 
-      const ipns = await api.name.publish(cid, { key: key });
-      console.log("ipns", ipns, PeerId.parse(_key));
+      const res = await api.name.publish(cid, { key: key });
+      console.log("ipns", res, PeerId.parse(_key).toString());
     }
 
-    return cid;
+    return {
+      cid: cid.toString(),
+      ipfs: cid.toString(),
+      ipns: _key && PeerId.parse(_key).toString(),
+    };
   },
 };
