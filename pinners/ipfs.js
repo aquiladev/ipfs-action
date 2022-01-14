@@ -1,4 +1,5 @@
 const { create, globSource } = require("ipfs-http-client");
+const PeerId = require("peer-id");
 
 module.exports = {
   name: "IPFS",
@@ -19,15 +20,19 @@ module.exports = {
 
     if (key) {
       const keys = await api.key.list();
-      console.log(keys);
-      if (!keys.find((k) => k.name === key)) {
-        await api.key.gen(key, {
+      console.log("keys", keys);
+
+      let _key = keys.find((k) => k.name === key);
+      if (!_key) {
+        _key = await api.key.gen(key, {
           type: "rsa",
           size: 2048,
         });
+        console.log("gen", _key);
       }
+
       const ipns = await api.name.publish(cid, { key: key });
-      console.log(ipns);
+      console.log("ipns", ipns, PeerId.parse(_key));
     }
 
     return cid;
