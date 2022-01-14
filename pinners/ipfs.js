@@ -1,24 +1,26 @@
-const { create, globSource } = require('ipfs-http-client');
+const { create, globSource } = require("ipfs-http-client");
 
 module.exports = {
-  name: 'IPFS',
+  name: "IPFS",
   builder: async (options) => {
     const { host, port, protocol, timeout, headers } = options;
 
     return create({ host, port, protocol, timeout, headers });
   },
   upload: async (api, options) => {
-    const { path, timeout, verbose } = options;
+    const { path, timeout, verbose, key } = options;
 
     const files = globSource(path, { recursive: true });
     const { cid } = await api.add(files, { pin: true, timeout });
 
-    if (!cid)
-      throw new Error('Content hash is not found.');
+    if (!cid) throw new Error("Content hash is not found.");
 
-    if (verbose)
-      console.log(cid);
+    if (verbose) console.log(cid);
+
+    if (key) {
+      await api.name.publish(cid, { key: key });
+    }
 
     return cid;
-  }
-}
+  },
+};

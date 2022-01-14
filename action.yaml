@@ -35,6 +35,9 @@ inputs:
     description: '[ipfs] IPFS headers as json object'
     required: false
     default: "{}"
+  key:
+    description: "[ipfs] IPNS key name"
+    required: false
   pinataKey:
     description: '[pinata] Api Key. Required for pinata service'
     required: false

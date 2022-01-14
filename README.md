@@ -16,6 +16,7 @@ Parameter       |Required |Description
 `port`          |No       |[ipfs] IPFS host's port. Default `443`
 `protocol`      |No       |[ipfs] IPFS host's protocol. Default `https`
 `headers`       |No       |[ipfs] IPFS headers as json object. Default `{}`
+`key`           |No       |[ipfs] IPNS key name.
 `pinataKey`     |No       |[pinata] Api Key. Required for pinata service.
 `pinataSecret`  |No       |[pinata] Secret Api Key. Required for pinata service.
 `pinataPinName` |No       |[pinata] Human name for pin.
