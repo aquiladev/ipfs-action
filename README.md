@@ -16,14 +16,17 @@ Parameter       |Required |Description
 `port`          |No       |[ipfs] IPFS host's port. Default `443`
 `protocol`      |No       |[ipfs] IPFS host's protocol. Default `https`
 `headers`       |No       |[ipfs] IPFS headers as json object. Default `{}`
-`key`           |No       |[ipfs] IPNS key name.
+`key`           |No       |[ipfs] IPNS key name. IPNS key will be published when the key parameter is provided. The key will be created if it does not exist. Default `undefined`
 `pinataKey`     |No       |[pinata] Api Key. Required for pinata service.
 `pinataSecret`  |No       |[pinata] Secret Api Key. Required for pinata service.
 `pinataPinName` |No       |[pinata] Human name for pin.
 
 ## Outputs
 
-### `hash` - IPFS root's hash.
+- `hash` - IPFS CID
+- `cid` - IPFS CID
+- `ipfs` - IPFS CID
+- `ipns` - IPNS CID if applicable
 
 ## Documentation
 Take a look [DApps Delivery Guide](https://dapps-delivery-guide.readthedocs.io/)
