@@ -21,7 +21,6 @@ module.exports = {
     let _key;
     if (key) {
       const keys = await api.key.list();
-      console.log("keys", keys);
 
       _key = keys.find((k) => k.name === key);
       if (!_key) {
@@ -29,11 +28,11 @@ module.exports = {
           type: "rsa",
           size: 2048,
         });
-        console.log("gen", _key);
+
+        if (verbose) console.log(`Created IPNS key ${JSON.stringify(_key)}`);
       }
 
-      const res = await api.name.publish(cid, { key });
-      console.log("ipns", res, PeerId.parse(_key.id).toB58String());
+      await api.name.publish(cid, { key });
     }
 
     return {
