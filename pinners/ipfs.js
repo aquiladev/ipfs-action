@@ -32,14 +32,14 @@ module.exports = {
         console.log("gen", _key);
       }
 
-      const res = await api.name.publish(cid, { key: key });
-      console.log("ipns", res, PeerId.parse(_key).toString());
+      const res = await api.name.publish(cid, { key });
+      console.log("ipns", res, PeerId.parse(_key.id).toString());
     }
 
     return {
       cid: cid.toString(),
       ipfs: cid.toString(),
-      ipns: _key && PeerId.parse(_key).toString(),
+      ipns: _key && PeerId.parse(_key.id).toString(),
     };
   },
 };
