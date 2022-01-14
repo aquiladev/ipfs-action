@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint --max-warnings 0 **/*.js",
+    "lint": "eslint --max-warnings 0 runner.js uploader.js pinners/*.js",
     "prune-prod": "npm prune --production",
     "release": "release-it"
   },
@@ -36,11 +36,8 @@
     "minimist": "1.2.5"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
+    "eslint": "8.6.0",
     "jest": "27.0.4",
     "release-it": "14.8.0"
-  },
-  "eslintIgnore": [
-    "*.test.js"
-  ]
+  }
 }
