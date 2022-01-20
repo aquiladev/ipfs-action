@@ -5,7 +5,6 @@ const { fetch, Request, Headers } = require('./http/fetch')
 const { TimeoutError, HTTPError } = require('./http/error')
 const merge = require('merge-options').bind({ ignoreUndefined: true })
 const { URL, URLSearchParams } = require('iso-url')
-const { AbortController } = require('native-abort-controller')
 const anySignal = require('any-signal')
 
 /**

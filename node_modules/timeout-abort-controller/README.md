@@ -15,8 +15,8 @@ npm install timeout-abort-controller
 ## Usage
 
 ```js
-const AbortController = require('abort-controller')
-const TimeoutController = require('timeout-abort-controller')
+const { AbortController } = require('native-abort-controller')
+const { TimeoutController } = require('timeout-abort-controller')
 const anySignal = require('any-signal')
 
 const userController = new AbortController()
@@ -58,6 +58,7 @@ Clears the timer and sets the internal timeout to occur after the `ms` timeout i
 ## Related
 
 - [`abort-controller`](https://github.com/mysticatea/abort-controller)
+- [`native-abort-controller`](https://github.com/achingbrain/native-abort-controller)
 - [`any-signal`](https://github.com/jacobheun/any-signal) Combines an array of AbortSignals into a single signal.
 
 ## LICENSE

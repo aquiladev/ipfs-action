@@ -32,9 +32,8 @@
     "@actions/core": "1.4.0",
     "@actions/github": "5.0.0",
     "@pinata/sdk": "1.1.23",
-    "ipfs-http-client": "50.1.1",
-    "minimist": "1.2.5",
-    "peer-id": "^0.16.0"
+    "ipfs-http-client": "55.0.0",
+    "peer-id": "0.16.0"
   },
   "devDependencies": {
     "eslint": "8.6.0",

@@ -5,7 +5,7 @@ import { Agent } from 'https'
 export default fetch
 
 declare function fetch (
-  url: string,
+  url: RequestInfo,
   options?: RequestInit
 ): Promise<Response>
 

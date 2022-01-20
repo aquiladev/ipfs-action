@@ -1,13 +1,15 @@
 'use strict'
 
-var bench = require('fastbench')
-var retimer = require('./')
-var max = 10000
+/* eslint-disable no-var */
+
+const bench = require('fastbench')
+const retimer = require('./')
+const max = 10000
 
 function benchSetTimeout (done) {
-  var timers = new Array(max)
-  var completed = 0
-  var toReschedule = 20
+  const timers = new Array(max)
+  let completed = 0
+  let toReschedule = 20
 
   schedule()
 
@@ -31,9 +33,9 @@ function benchSetTimeout (done) {
 }
 
 function benchRetimer (done) {
-  var timers = new Array(max)
-  var completed = 0
-  var toReschedule = 20
+  const timers = new Array(max)
+  let completed = 0
+  let toReschedule = 20
 
   schedule()
 
@@ -57,7 +59,7 @@ function benchRetimer (done) {
   }
 }
 
-var run = bench([
+const run = bench([
   benchSetTimeout,
   benchRetimer
 ], 100)

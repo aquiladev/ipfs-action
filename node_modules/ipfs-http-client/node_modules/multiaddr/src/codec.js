@@ -3,8 +3,8 @@
 const convert = require('./convert')
 const protocols = require('./protocols-table')
 const varint = require('varint')
-const uint8ArrayConcat = require('uint8arrays/concat')
-const uint8ArrayToString = require('uint8arrays/to-string')
+const { concat: uint8ArrayConcat } = require('uint8arrays/concat')
+const { toString: uint8ArrayToString } = require('uint8arrays/to-string')
 
 // export codec
 module.exports = {
