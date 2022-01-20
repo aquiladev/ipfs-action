@@ -16,7 +16,7 @@ module.exports = {
     const { path, timeout, verbose } = options;
 
     const files = globSource(path, '**/*');
-    const { cid } = await api.add(files, { pin: true, timeout });
+    const { cid } = await api.addAll(files, { pin: true, timeout });
 
     if (!cid) throw new Error("Content hash is not found.");
 
