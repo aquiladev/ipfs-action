@@ -15,7 +15,7 @@ module.exports = {
   upload: async (api, options) => {
     const { path, timeout, verbose } = options;
 
-    const files = globSource(path, { recursive: true });
+    const files = globSource(path, '**/*');
     const { cid } = await api.add(files, { pin: true, timeout });
 
     if (!cid) throw new Error("Content hash is not found.");
