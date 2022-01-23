@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "web3.js",
+			"path": "..\\..\\..\\..\\web3.js"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
