@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://protocol.ai)
 [![](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](http://ipfs.io/)
 [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](http://webchat.freenode.net/?channels=%23ipfs)
-[![Travis CI](https://flat.badgen.net/travis/ipfs/js-ipfs-utils)](https://travis-ci.com/ipfs/js-ipfs-utils)
+[![Build Status](https://github.com/ipfs/js-ipfs-utils/actions/workflows/js-test-and-release.yml/badge.svg?branch=main)](https://github.com/ipfs/js-ipfs-utils/actions/workflows/js-test-and-release.yml)
 [![Codecov branch](https://img.shields.io/codecov/c/github/ipfs/js-ipfs-utils/master.svg?style=flat-square)](https://codecov.io/gh/ipfs/js-ipfs-utils)
 [![Dependency Status](https://david-dm.org/ipfs/js-ipfs-utils.svg?style=flat-square)](https://david-dm.org/ipfs/js-ipfs-utils)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
@@ -22,10 +22,6 @@ The IPFS ecosystem has lots of repos with it comes several problems like:
 - Dependencies management - it's really easy with so many repos for dependencies to go out of control, they become outdated, different repos use different modules to do the same thing (like merging defaults options), browser bundles ends up with multiple versions of the same package, bumping versions is cumbersome to do because we need to go through several repos, etc.
 
 These problems are the motivation for this package, having shared logic in this package avoids creating cyclic dependencies, centralizes common use modules/functions (exactly like aegir does for the tooling), semantic versioning for 3rd party dependencies is handled in one single place (a good example is going from streams 2 to 3) and maintainers should only care about having `ipfs-utils` updated.
-
-## Lead Maintainer <!-- omit in toc -->
-
-[Hugo Dias](https://github.com/hugomrdias)
 
 ## Table of Contents <!-- omit in toc -->
 

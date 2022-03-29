@@ -57,5 +57,5 @@ outputs:
   ipns:
     description: 'IPNS CID if applicable'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'

@@ -1,1 +1,2 @@
-export default function isElectron(): boolean;
+function isElectron (): boolean
+export = isElectron

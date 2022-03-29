@@ -88,7 +88,9 @@ const fetchWithProgress = (url, options = {}) => {
     request.ontimeout = handleEvent
     request.onabort = handleEvent
 
-    request.send(/** @type {BodyInit} */(options.body))
+    // @ts-expect-error options.body can be a node readable stream, which isn't compatible with XHR, but this
+    // file is a browser override so you won't get a node readable stream so ignore the error
+    request.send(options.body)
   })
 }
 

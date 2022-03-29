@@ -1,12 +1,8 @@
-/* globals self, window */
 'use strict'
 
-// Get around https://github.com/mysticatea/abort-controller/pull/22
-const { AbortController } =
-  typeof self !== 'undefined' ? self
-    : typeof window !== 'undefined' ? window
-    /* otherwise */ : require('abort-controller')
+const { AbortController } = require('native-abort-controller')
 
+// @ts-expect-error no types
 const retimer = require('retimer')
 
 class TimeoutController extends AbortController {
@@ -46,5 +42,6 @@ class TimeoutController extends AbortController {
   }
 }
 
-module.exports = TimeoutController
-module.exports.TimeoutController = TimeoutController
+module.exports = {
+  TimeoutController
+}

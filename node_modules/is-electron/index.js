@@ -10,7 +10,7 @@ function isElectron() {
         return true;
     }
 
-    // Detect the user agent when the `nodeIntegration` option is set to true
+    // Detect the user agent when the `nodeIntegration` option is set to false
     if (typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.indexOf('Electron') >= 0) {
         return true;
     }

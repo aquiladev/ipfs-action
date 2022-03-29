@@ -8,7 +8,5 @@ if (globalThis.AbortController && globalThis.AbortSignal) {
   impl = require('abort-controller')
 }
 
-module.exports = {
-  AbortController: impl.AbortController,
-  AbortSignal: impl.AbortSignal
-}
+module.exports.AbortSignal = impl.AbortSignal
+module.exports.AbortController = impl.AbortController

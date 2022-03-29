@@ -8,6 +8,10 @@ function getDefaultBase () {
   if (isReactNative) {
     return 'http://localhost'
   }
+  // in some environments i.e. cloudflare workers location is not available
+  if (!self.location) {
+    return ''
+  }
 
   return self.location.protocol + '//' + self.location.host
 }

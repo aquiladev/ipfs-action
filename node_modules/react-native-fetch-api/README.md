@@ -1,4 +1,13 @@
-# Fetch
+# fetch
+
+[![npm version][npm-image]][npm-url] [![ci][github-ci-image]][github-ci-url]
+
+[npm-url]:https://www.npmjs.com/package/react-native-fetch-api
+[npm-image]:https://img.shields.io/npm/v/react-native-fetch-api.svg
+[github-ci-url]:https://github.com/react-native-community/fetch/actions
+[github-ci-image]:https://github.com/react-native-community/fetch/workflows/Node%20CI/badge.svg
+
+> A fetch API polyfill for React Native with text streaming support
 
 This is a fork of GitHub's fetch [polyfill](https://github.com/github/fetch), the fetch implementation React Native currently [provides](https://github.com/facebook/react-native/blob/master/Libraries/Network/fetch.js). This project features an alternative fetch implementation directy built on top of React Native's [Networking API](https://github.com/facebook/react-native/tree/master/Libraries/Network) instead of `XMLHttpRequest` for performance gains. At the same time, it aims to fill in some gaps of the [WHATWG specification](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) for fetch, namely the support for text streaming.
 
