@@ -7,7 +7,7 @@
     "test": "jest",
     "lint": "eslint --max-warnings 0 runner.js uploader.js pinners/*.js",
     "prune-prod": "npm prune --production",
-    "release": "release-it"
+    "release": "npm i && release-it"
   },
   "repository": {
     "type": "git",
