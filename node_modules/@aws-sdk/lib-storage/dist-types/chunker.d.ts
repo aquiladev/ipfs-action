@@ -1,0 +1,2 @@
+import { BodyDataTypes } from "./types";
+export declare const getChunk: (data: BodyDataTypes, partSize: number) => AsyncGenerator<import("./Upload").RawDataPart, void, undefined>;
