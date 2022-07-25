@@ -13,7 +13,8 @@
     "tagName": "v${version}"
   },
   "github": {
-    "release": true
+    "release": true,
+    "web": true
   },
   "npm": {
     "publish": false
