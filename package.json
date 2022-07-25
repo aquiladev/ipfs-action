@@ -8,7 +8,7 @@
     "lint": "eslint --max-warnings 0 runner.js uploader.js pinners/*.js",
     "prune-prod": "npm prune --production",
     "release": "npm i && release-it",
-    "build": "ncc build index.js -o dist"
+    "build": "ncc build src/action.js -o dist"
   },
   "repository": {
     "type": "git",
