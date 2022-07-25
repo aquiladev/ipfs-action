@@ -1,0 +1,5 @@
+/// <reference types="node" />
+export declare const recordEventMessage: Buffer;
+export declare const statsEventMessage: Buffer;
+export declare const endEventMessage: Buffer;
+export declare const exception: Buffer;
