@@ -44,8 +44,8 @@ export const toString = useBuffer
     (bytes, start, end) => {
       return end - start > 64
         ? // eslint-disable-line operator-linebreak
-          // @ts-ignore
-          globalThis.Buffer.from(bytes.subarray(start, end)).toString('utf8')
+      // @ts-ignore
+        globalThis.Buffer.from(bytes.subarray(start, end)).toString('utf8')
         : utf8Slice(bytes, start, end)
     }
   /* c8 ignore next 11 */
@@ -69,8 +69,8 @@ export const fromString = useBuffer
     (string) => {
       return string.length > 64
         ? // eslint-disable-line operator-linebreak
-          // @ts-ignore
-          globalThis.Buffer.from(string)
+      // @ts-ignore
+        globalThis.Buffer.from(string)
         : utf8ToBytes(string)
     }
   /* c8 ignore next 7 */

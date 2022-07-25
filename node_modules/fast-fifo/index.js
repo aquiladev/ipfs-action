@@ -26,6 +26,10 @@ module.exports = class FastFIFO {
     return val
   }
 
+  peek () {
+    return this.tail.peek()
+  }
+
   isEmpty () {
     return this.head.isEmpty()
   }

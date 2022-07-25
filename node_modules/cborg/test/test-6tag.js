@@ -5,25 +5,9 @@ import chai from 'chai'
 import { Token, Type } from '../lib/token.js'
 import { decode, encode } from '../cborg.js'
 import { fromHex, toHex } from '../lib/byte-utils.js'
+import { dateDecoder, dateEncoder } from './common.js'
 
 const { assert } = chai
-
-function dateDecoder (obj) {
-  if (typeof obj !== 'string') {
-    throw new Error('expected string for tag 1')
-  }
-  return new Date(obj)
-}
-
-function dateEncoder (obj) {
-  if (!(obj instanceof Date)) {
-    throw new Error('expected Date for "Date" encoder')
-  }
-  return [
-    new Token(Type.tag, 0),
-    new Token(Type.string, obj.toISOString().replace(/\.000Z$/, 'Z'))
-  ]
-}
 
 function Uint16ArrayDecoder (obj) {
   if (typeof obj !== 'string') {

@@ -15,6 +15,7 @@ declare type Sources =
     }
 declare class V8ToIstanbul {
   load(): Promise<void>
+  destroy(): void
   applyCoverage(blocks: ReadonlyArray<Profiler.FunctionCoverage>): void
   toIstanbul(): CoverageMapData
 }

@@ -1,7 +1,8 @@
 {
   "name": "responselike",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A response-like object for mocking a Node.js HTTP response stream",
+  "funding": "https://github.com/sponsors/sindresorhus",
   "main": "src/index.js",
   "scripts": {
     "test": "xo && nyc ava",
@@ -20,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukechilds/responselike.git"
+    "url": "https://github.com/sindresorhus/responselike.git"
   },
   "author": "lukechilds",
   "license": "MIT",

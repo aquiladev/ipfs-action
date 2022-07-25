@@ -1,6 +1,7 @@
 'use strict'
 
 const { TimeoutError, AbortError } = require('./error')
+// @ts-expect-error
 const { Response, Request, Headers, default: fetch } = require('../fetch')
 
 /**

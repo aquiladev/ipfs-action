@@ -23,6 +23,10 @@ module.exports = class FixedFIFO {
     return last
   }
 
+  peek () {
+    return this.buffer[this.btm]
+  }
+
   isEmpty () {
     return this.buffer[this.btm] === undefined
   }

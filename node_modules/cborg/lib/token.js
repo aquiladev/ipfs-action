@@ -54,6 +54,8 @@ class Token {
     this.encodedLength = encodedLength
     /** @type {Uint8Array|undefined} */
     this.encodedBytes = undefined
+    /** @type {Uint8Array|undefined} */
+    this.byteValue = undefined
   }
 
   /* c8 ignore next 3 */

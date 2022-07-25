@@ -47,6 +47,18 @@ inputs:
   pinataPinName:
     description: '[pinata] Human name for pin'
     required: false
+  pinName:
+    description: '[psa] Human name for pin'
+    required: false
+  filebaseBucket:
+    description: '[filebase] Bucket Name. Required for Filebase service'
+    required: false
+  filebaseKey:
+    description: '[filebase] Api Key. Required for Filebase service'
+    required: false
+  filebaseSecret:
+    description: '[filebase] Secret Api Key. Required for Filebase service'
+    required: false
 outputs:
   hash:
     description: 'IPFS CID'
@@ -58,4 +70,4 @@ outputs:
     description: 'IPNS CID if applicable'
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'dist/index.js'

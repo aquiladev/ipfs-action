@@ -42,9 +42,11 @@ export class Bl {
   }
 
   reset () {
-    this.chunks = []
     this.cursor = 0
     this.maxCursor = -1
+    if (this.chunks.length) {
+      this.chunks = []
+    }
     if (this._initReuseChunk !== null) {
       this.chunks.push(this._initReuseChunk)
       this.maxCursor = this._initReuseChunk.length - 1

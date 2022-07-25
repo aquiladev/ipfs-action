@@ -154,10 +154,9 @@ encodeFloat.encodedSize = function encodedSize (token, options) {
     return 1
   }
 
-  let decoded
   if (!options || options.float64 !== true) {
     encodeFloat16(float)
-    decoded = readFloat16(ui8a, 1)
+    let decoded = readFloat16(ui8a, 1)
     if (float === decoded || Number.isNaN(float)) {
       return 3
     }

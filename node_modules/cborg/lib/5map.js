@@ -103,3 +103,11 @@ export function encodeMap (buf, token) {
 // using a map as a map key, are you sure about this? we can only sort
 // by map length here, it's up to the encoder to decide to look deeper
 encodeMap.compareTokens = uint.encodeUint.compareTokens
+
+/**
+ * @param {Token} token
+ * @returns {number}
+ */
+encodeMap.encodedSize = function encodedSize (token) {
+  return uint.encodeUintValue.encodedSize(token.value)
+}

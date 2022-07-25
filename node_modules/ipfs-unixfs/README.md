@@ -47,7 +47,7 @@ The UnixFS spec can be found inside the [ipfs/specs repository](http://github.co
 ### Use in Node.js
 
 ```JavaScript
-var { UnixFS } = require('ipfs-unixfs')
+import { UnixFS } from 'ipfs-unixfs'
 ```
 
 ### Use in a browser with browserify, webpack or any other bundler
@@ -55,7 +55,7 @@ var { UnixFS } = require('ipfs-unixfs')
 The code published to npm that gets loaded on require is in fact a ES5 transpiled version with the right shims added. This means that you can require it and use with your favourite bundler without having to adjust asset management process.
 
 ```JavaScript
-var { UnixFS } = require('ipfs-unixfs')
+import { UnixFS } from 'ipfs-unixfs'
 ```
 
 ### Use in a browser Using a script tag

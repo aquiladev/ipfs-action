@@ -1,5 +1,6 @@
 # Dev Related
 .idea/
+node_modules
 
 # Logs
 logs

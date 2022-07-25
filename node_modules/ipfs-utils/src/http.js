@@ -91,9 +91,11 @@ class HTTP {
   async fetch (resource, options = {}) {
     /** @type {HTTPOptions} */
     const opts = merge(this.opts, options)
+    // @ts-expect-error
     const headers = new Headers(opts.headers)
 
     // validate resource type
+    // @ts-expect-error
     if (typeof resource !== 'string' && !(resource instanceof URL || resource instanceof Request)) {
       throw new TypeError('`resource` must be a string, URL, or Request')
     }
@@ -125,12 +127,15 @@ class HTTP {
     // @ts-ignore
     const signal = anySignal([abortController.signal, opts.signal])
 
+    /** @type {ExtendedResponse} */
+    // @ts-expect-error additional fields are assigned below
     const response = await timeout(
       fetch(
         url.toString(),
         {
           ...opts,
           signal,
+          // @ts-expect-error non-browser fetch implementations may take extra options
           timeout: undefined,
           headers
         }
@@ -146,8 +151,8 @@ class HTTP {
       throw new HTTPError(response)
     }
 
-    response.iterator = function () {
-      return fromStream(response.body)
+    response.iterator = async function * () {
+      yield * fromStream(response.body)
     }
 
     response.ndjson = async function * () {

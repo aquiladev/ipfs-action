@@ -41,6 +41,10 @@ Return the oldest value from the FIFO.
 
 Returns `true` if the FIFO is empty and false otherwise.
 
+#### `value = q.peek()`
+
+Return the oldest value from the FIFO without shifting it out.
+
 ## Benchmarks
 
 Included in bench.js is a simple benchmark that benchmarks this against a simple

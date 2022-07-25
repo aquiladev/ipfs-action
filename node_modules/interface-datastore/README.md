@@ -41,14 +41,13 @@
 If you want the same functionality as [go-ds-flatfs](https://github.com/ipfs/go-ds-flatfs), use sharding with fs.
 
 ```js
-const FsStore from 'datastore-fs')
-const ShardingStore from 'datastore-core').ShardingDatatstore
-const NextToLast from 'datastore-core').shard.NextToLast
+import FsStore from 'datastore-fs'
+import { ShardingDataStore, shard } from 'datastore-core'
 
 const fs = new FsStore('path/to/store')
 
 // flatfs now works like go-flatfs
-const flatfs = await ShardingStore.createOrOpen(fs, new NextToLast(2))
+const flatfs = await ShardingStore.createOrOpen(fs, new shard.NextToLast(2))
 ```
 
 ## Install
@@ -85,7 +84,7 @@ Most API methods accept an [AbortSignal][] as part of an options object.  Implem
 The streaming `(put|get|delete)Many` methods are intended to be used with modules such as [it-parallel-batch](https://www.npmjs.com/package/it-parallel-batch) to allow calling code to control levels of parallelisation.  The batching method ensures results are returned in the correct order, but interface implementations should be thread safe.
 
 ```js
-const batch from 'it-parallel-batch')
+import batch from 'it-parallel-batch'
 const source = [{
   key: ..,
   value: ..

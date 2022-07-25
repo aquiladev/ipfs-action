@@ -33,7 +33,9 @@ const withUploadProgress = (options) => {
   // and `ArrayBuffer`s to strings.
     const content = normalizeBody(body)
 
+    // @ts-expect-error this is node-fetch
     const rsp = new Response(content)
+    // @ts-expect-error this is node-fetch
     const source = iterateBodyWithProgress(/** @type {NodeReadableStream} */(rsp.body), onUploadProgress)
     return {
       ...options,

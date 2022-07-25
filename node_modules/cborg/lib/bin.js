@@ -2,7 +2,7 @@
 
 import process from 'process'
 import { decode, encode } from '../cborg.js'
-import { tokensToDiagnostic } from './diagnostic.js'
+import { tokensToDiagnostic, fromDiag } from './diagnostic.js'
 import { fromHex as _fromHex, toHex } from './byte-utils.js'
 
 /**
@@ -11,15 +11,18 @@ import { fromHex as _fromHex, toHex } from './byte-utils.js'
 function usage (code) {
   console.error('Usage: cborg <command> <args>')
   console.error('Valid commands:')
-  console.error('\thex2diag [hex input]')
-  console.error('\thex2bin [hex input]')
-  console.error('\thex2json [--pretty] [hex input]')
-  console.error('\tbin2hex [binary input]')
   console.error('\tbin2diag [binary input]')
+  console.error('\tbin2hex [binary input]')
   console.error('\tbin2json [--pretty] [binary input]')
-  console.error('\tjson2hex \'[json input]\'')
-  console.error('\tjson2diag \'[json input]\'')
+  console.error('\tdiag2bin [diagnostic input]')
+  console.error('\tdiag2hex [diagnostic input]')
+  console.error('\tdiag2json [--pretty] [diagnostic input]')
+  console.error('\thex2bin [hex input]')
+  console.error('\thex2diag [hex input]')
+  console.error('\thex2json [--pretty] [hex input]')
   console.error('\tjson2bin \'[json input]\'')
+  console.error('\tjson2diag \'[json input]\'')
+  console.error('\tjson2hex \'[json input]\'')
   console.error('Input may either be supplied as an argument or piped via stdin')
   process.exit(code || 0)
 }
@@ -59,24 +62,13 @@ async function run () {
       return usage(0)
     }
 
-    case 'hex2json': {
-      const { argv, pretty } = argvPretty()
-      const bin = fromHex(argv.length < 4 ? (await fromStdin()).toString() : argv[3])
-      return console.log(JSON.stringify(decode(bin), undefined, pretty ? 2 : undefined))
-    }
-
-    case 'hex2diag': {
-      const bin = fromHex(process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3])
+    case 'bin2diag': {
+      /* c8 ignore next 1 */
+      const bin = process.argv.length < 4 ? (await fromStdin()) : new TextEncoder().encode(process.argv[3])
       for (const line of tokensToDiagnostic(bin)) {
         console.log(line)
       }
       return
-    }
-
-    case 'hex2bin': {
-      // this is really nothing to do with cbor.. just handy
-      const bin = fromHex(process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3])
-      return process.stdout.write(bin)
     }
 
     case 'bin2hex': {
@@ -93,19 +85,52 @@ async function run () {
       return console.log(JSON.stringify(decode(bin), undefined, pretty ? 2 : undefined))
     }
 
-    case 'bin2diag': {
+    case 'diag2bin': {
+      // no coverage on windows for non-stdin input
       /* c8 ignore next 1 */
-      const bin = process.argv.length < 4 ? (await fromStdin()) : new TextEncoder().encode(process.argv[3])
+      const bin = fromDiag(process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3])
+      return process.stdout.write(bin)
+    }
+
+    case 'diag2hex': {
+      // no coverage on windows for non-stdin input
+      /* c8 ignore next 1 */
+      const bin = fromDiag(process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3])
+      return console.log(toHex(bin))
+    }
+
+    case 'diag2json': {
+      const { argv, pretty } = argvPretty()
+      // no coverage on windows for non-stdin input
+      /* c8 ignore next 1 */
+      const bin = fromDiag(argv.length < 4 ? (await fromStdin()).toString() : argv[3])
+      return console.log(JSON.stringify(decode(bin), undefined, pretty ? 2 : undefined))
+    }
+
+    case 'hex2bin': {
+      // this is really nothing to do with cbor.. just handy
+      const bin = fromHex(process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3])
+      return process.stdout.write(bin)
+    }
+
+    case 'hex2diag': {
+      const bin = fromHex(process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3])
       for (const line of tokensToDiagnostic(bin)) {
         console.log(line)
       }
       return
     }
 
-    case 'json2hex': {
+    case 'hex2json': {
+      const { argv, pretty } = argvPretty()
+      const bin = fromHex(argv.length < 4 ? (await fromStdin()).toString() : argv[3])
+      return console.log(JSON.stringify(decode(bin), undefined, pretty ? 2 : undefined))
+    }
+
+    case 'json2bin': {
       const inp = process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3]
       const obj = JSON.parse(inp)
-      return console.log(toHex(encode(obj)))
+      return process.stdout.write(encode(obj))
     }
 
     case 'json2diag': {
@@ -117,10 +142,10 @@ async function run () {
       return
     }
 
-    case 'json2bin': {
+    case 'json2hex': {
       const inp = process.argv.length < 4 ? (await fromStdin()).toString() : process.argv[3]
       const obj = JSON.parse(inp)
-      return process.stdout.write(encode(obj))
+      return console.log(toHex(encode(obj)))
     }
 
     default: { // no, or unknown cmd

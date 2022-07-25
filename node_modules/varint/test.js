@@ -77,7 +77,6 @@ test('big integers', function (assert) {
   var bigs = []
   for(var i = 32; i <= 53; i++) (function (i) {
     bigs.push(Math.pow(2, i) - 1)
-    bigs.push(Math.pow(2, i))
   })(i)
 
   bigs.forEach(function (n) {
@@ -93,7 +92,7 @@ test('fuzz test - big', function(assert) {
   var expect
     , encoded
 
-  var MAX_INTD = Math.pow(2, 55)
+  var MAX_INTD = Number.MAX_SAFE_INTEGER
   var MAX_INT = Math.pow(2, 31)
 
   for(var i = 0, len = 100; i < len; ++i) {
@@ -110,7 +109,7 @@ test('fuzz test - big', function(assert) {
 test('encodingLength', function (assert) {
 
   for(var i = 0; i <= 53; i++) {
-    var n = Math.pow(2, i)
+    var n = Math.pow(2, i) - 1
     assert.equal(encode(n).length, encodingLength(n))
   }
 
@@ -130,6 +129,24 @@ test('buffer too short', function (assert) {
       assert.equal(err.constructor, RangeError)
       assert.equal(decode.bytes, 0)
     }
+  }
+  assert.end()
+})
+
+test('buffer too long', function (assert) {
+
+  var buffer = Uint8Array.from(
+    Array.from({length: 150}, function () { return 0xff })
+      .concat(Array.from({length: 1}, function () { return 0x1 }))
+  )
+
+  try {
+    var val = decode(buffer)
+    encode(val)
+    assert.fail('expected an error received value instead: ' + val)
+  } catch (err) {
+    assert.equal(err.constructor, RangeError)
+    assert.equal(decode.bytes, 0)
   }
   assert.end()
 })

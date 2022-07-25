@@ -70,3 +70,11 @@ export function encodeTag (buf, token) {
 }
 
 encodeTag.compareTokens = uint.encodeUint.compareTokens
+
+/**
+ * @param {Token} token
+ * @returns {number}
+ */
+encodeTag.encodedSize = function encodedSize (token) {
+  return uint.encodeUintValue.encodedSize(token.value)
+}

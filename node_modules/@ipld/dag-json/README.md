@@ -27,7 +27,7 @@ CID.asCID(decoded.z.a) // cid instance
 
 ## Usage
 
-`@ipld/dag-pb` is designed to be used within multiformats but can be used separately. `encode()`, `decode()` are available as exports, as are `name` and `code` to match with the corresponding DAG-JSON [multicodec](https://github.com/multiformats/multicodec/).
+`@ipld/dag-json` is designed to be used within multiformats but can be used separately. `encode()`, `decode()` are available as exports, as are `name` and `code` to match with the corresponding DAG-JSON [multicodec](https://github.com/multiformats/multicodec/).
 
 ## License
 

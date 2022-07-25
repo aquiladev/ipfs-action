@@ -32,6 +32,10 @@ converter.applyCoverage([
 // output coverage information in a form that can
 // be consumed by Istanbul.
 console.info(JSON.stringify(converter.toIstanbul()))
+
+// cleanup resources allocated in "load" (i.e. by the source-map dependency),
+// the converter may not be used anymore afterwards
+converter.destroy() 
 ```
 
 ## Ignoring Uncovered Lines

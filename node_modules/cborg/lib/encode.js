@@ -30,16 +30,21 @@ const defaultEncodeOptions = {
   quickEncodeToken
 }
 
-/** @type {TokenTypeEncoder[]} */
-const cborEncoders = []
-cborEncoders[Type.uint.major] = encodeUint
-cborEncoders[Type.negint.major] = encodeNegint
-cborEncoders[Type.bytes.major] = encodeBytes
-cborEncoders[Type.string.major] = encodeString
-cborEncoders[Type.array.major] = encodeArray
-cborEncoders[Type.map.major] = encodeMap
-cborEncoders[Type.tag.major] = encodeTag
-cborEncoders[Type.float.major] = encodeFloat
+/** @returns {TokenTypeEncoder[]} */
+export function makeCborEncoders () {
+  const encoders = []
+  encoders[Type.uint.major] = encodeUint
+  encoders[Type.negint.major] = encodeNegint
+  encoders[Type.bytes.major] = encodeBytes
+  encoders[Type.string.major] = encodeString
+  encoders[Type.array.major] = encodeArray
+  encoders[Type.map.major] = encodeMap
+  encoders[Type.tag.major] = encodeTag
+  encoders[Type.float.major] = encodeFloat
+  return encoders
+}
+
+const cborEncoders = makeCborEncoders()
 
 const buf = new Bl()
 
@@ -441,6 +446,7 @@ function encodeCustom (data, encoders, options) {
       return asU8A(buf.chunks[0])
     }
   }
+  buf.reset()
   tokensToEncoded(buf, tokens, encoders, options)
   return buf.toBytes(true)
 }
