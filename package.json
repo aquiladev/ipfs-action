@@ -1,6 +1,6 @@
 {
   "name": "ipfs-action",
-  "version": "0.2.2-alpha.0",
+  "version": "0.3.0-alpha.0",
   "description": "IPFS upload action",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aquiladev/ipfs-action.git"
+    "url": "git+https://github.com/filebase/ipfs-action.git"
   },
   "keywords": [
     "IPFS",
@@ -25,9 +25,9 @@
   "author": "Sergii Bomko <aquila.ua@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aquiladev/ipfs-action/issues"
+    "url": "https://github.com/filebase/ipfs-action/issues"
   },
-  "homepage": "https://github.com/aquiladev/ipfs-action#readme",
+  "homepage": "https://github.com/filebase/ipfs-action#readme",
   "dependencies": {
     "@actions/core": "1.4.0",
     "@actions/github": "5.0.0",
