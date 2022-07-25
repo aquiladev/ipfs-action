@@ -5,21 +5,21 @@ const { filesFromPath } = require('files-from-path')
 module.exports = {
     name: "Filebase",
     builder: async (options) => {
-        const { apiKey, apiSecret, bucket } = options;
+        const { filebaseKey, filebaseSecret, filebaseBucket } = options;
 
-        if (!apiKey) {
-            throw new Error("apiKey is empty");
+        if (!filebaseKey) {
+            throw new Error("filebaseKey is empty");
         }
 
-        if (!apiSecret) {
-            throw new Error("apiSecret is empty");
+        if (!filebaseSecret) {
+            throw new Error("filebaseSecret is empty");
         }
 
-        if (!bucket) {
-            throw new Error("bucket is empty");
+        if (!filebaseBucket) {
+            throw new Error("filebaseBucket is empty");
         }
 
-        return { key: apiKey, secret: apiSecret, bucket };
+        return { key: filebaseKey, secret: filebaseSecret, bucket: filebaseBucket };
     },
     upload: async (api, options) => {
         console.log(`Parsing options...`);

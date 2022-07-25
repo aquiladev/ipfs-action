@@ -24,9 +24,9 @@ describe.skip("index: Integration test", () => {
     process.env["INPUT_PATH"] = "./data";
     process.env["INPUT_SERVICE"] = "filebase";
     process.env["INPUT_PINNAME"] = "filebase-ipfs-action-runner-test";
-    process.env["INPUT_BUCKET"] = FILEBASE_CONFIG.bucket;
-    process.env["INPUT_APIKEY"] = FILEBASE_CONFIG.key;
-    process.env["INPUT_APISECRET"] = FILEBASE_CONFIG.secret;
+    process.env["INPUT_FILEBASEBUCKET"] = FILEBASE_CONFIG.bucket;
+    process.env["INPUT_FILEBASEKEY"] = FILEBASE_CONFIG.key;
+    process.env["INPUT_FILEBASESECRET"] = FILEBASE_CONFIG.secret;
     process.env["INPUT_TIMEOUT"] = 60000;
     process.env["INPUT_VERBOSE"] = true;
     await run();

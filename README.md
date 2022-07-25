@@ -17,10 +17,13 @@ Parameter       |Required |Description
 `protocol`      |No       |[ipfs] IPFS host's protocol. Default `https`
 `headers`       |No       |[ipfs] IPFS headers as json object. Default `{}`
 `key`           |No       |[ipfs] IPNS key name. IPNS key will be published when the key parameter is provided. The key will be created if it does not exist. Default `undefined`
+`pinName`       |No       |[psa] Human name for pin.
 `pinataKey`     |No       |[pinata] Api Key. Required for pinata service.
 `pinataSecret`  |No       |[pinata] Secret Api Key. Required for pinata service.
 `pinataPinName` |No       |[pinata] Human name for pin.
-
+`filebaseBucket`|No       |[filebase] Bucket to store pin in. Required for filebase service.
+`filebaseKey`   |No       |[filebase] S3 Access Key. Required for filebase service.
+`filebaseSecret`|No       |[filebase] S3 Secret Key. Required for filebase service.
 ## Outputs
 
 - `hash` - IPFS CID

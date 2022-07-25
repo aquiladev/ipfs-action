@@ -16,9 +16,9 @@ async function run() {
     const pinataKey = core.getInput("pinataKey");
     const pinataSecret = core.getInput("pinataSecret");
     const pinataPinName = core.getInput("pinataPinName");
-    const bucket = core.getInput("bucket")
-    const apiKey = core.getInput("apiKey")
-    const apiSecret = core.getInput("apiSecret")
+    const filebaseBucket = core.getInput("filebaseBucket")
+    const filebaseKey = core.getInput("filebaseKey")
+    const filebaseSecret = core.getInput("filebaseSecret")
     const timeout = core.getInput("timeout");
     const verbose = core.getInput("verbose") === "true";
 
@@ -34,9 +34,9 @@ async function run() {
       pinataKey,
       pinataSecret,
       pinataPinName,
-      bucket,
-      apiKey,
-      apiSecret,
+      filebaseBucket,
+      filebaseKey,
+      filebaseSecret,
       timeout,
       verbose,
     };
