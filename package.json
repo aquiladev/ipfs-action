@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "eslint": "8.6.0",
+    "husky": "^8.0.1",
     "jest": "27.0.4",
     "release-it": "14.8.0"
   }
