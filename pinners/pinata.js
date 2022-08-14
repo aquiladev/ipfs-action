@@ -12,13 +12,12 @@ module.exports = {
   name: "Pinata",
   builder: async (options) => {
     const { pinataKey, pinataSecret } = options;
-
     if (!pinataKey) {
-      throw new Error("PinataKey is empty");
+      throw new Error("[pinata] API Key is empty");
     }
 
     if (!pinataSecret) {
-      throw new Error("PinataSecret is empty");
+      throw new Error("[pinata] Secret is empty");
     }
 
     return pinataSDK(pinataKey, pinataSecret);

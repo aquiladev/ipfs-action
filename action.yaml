@@ -39,13 +39,19 @@ inputs:
     description: "[ipfs] IPNS key name. IPNS key will be published when the key parameter is provided. The key will be created if it does not exist"
     required: false
   pinataKey:
-    description: '[pinata] Api Key. Required for pinata service'
+    description: '[pinata] API Key. Required for pinata service'
     required: false
   pinataSecret:
-    description: '[pinata] Secret Api Key. Required for pinata service'
+    description: '[pinata] Secret Key. Required for pinata service'
     required: false
   pinataPinName:
     description: '[pinata] Human name for pin'
+    required: false
+  infuraProjectId:
+    description: '[infura] Project ID. Required for infura service'
+    required: false
+  infuraProjectSecret:
+    description: '[infura] Project Secret. Required for infura service'
     required: false
 outputs:
   hash:
