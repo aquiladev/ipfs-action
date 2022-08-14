@@ -48,8 +48,8 @@ uses: aquiladev/ipfs-action@master
 id: ipfs
 with:
   path: ./build
-  host: ipfs.komputing.org
-  port: 443
+  host: ipfs.io
+  port: 5001
   protocol: https
   timeout: 180000
   verbose: true

@@ -22,11 +22,11 @@ inputs:
   host:
     description: '[ipfs] IPFS host'
     required: false
-    default: 'ipfs.komputing.org'
+    default: 'ipfs.io'
   port:
     description: '[ipfs] IPFS port'
     required: false
-    default: 443
+    default: 5001
   protocol:
     description: '[ipfs] IPFS protocol'
     required: false
