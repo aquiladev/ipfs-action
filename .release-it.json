@@ -3,7 +3,7 @@
     "before:init": [
       "npm i",
       "npm run lint",
-      "npm prune --production"
+      "npm run build"
     ],
     "after:git:release": "echo After git push, before github release",
     "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
