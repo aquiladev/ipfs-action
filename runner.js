@@ -15,6 +15,8 @@ async function run() {
     const pinataKey = core.getInput("pinataKey");
     const pinataSecret = core.getInput("pinataSecret");
     const pinataPinName = core.getInput("pinataPinName");
+    const infuraProjectId = core.getInput("infuraProjectId");
+    const infuraProjectSecret = core.getInput("infuraProjectSecret");
     const timeout = core.getInput("timeout");
     const verbose = core.getInput("verbose") === "true";
 
@@ -29,6 +31,8 @@ async function run() {
       pinataKey,
       pinataSecret,
       pinataPinName,
+      infuraProjectId,
+      infuraProjectSecret,
       timeout,
       verbose,
     };
