@@ -35,14 +35,15 @@ Take a look [DApps Delivery Guide](https://dapps-delivery-guide.readthedocs.io/)
 
 ## Examples
 
-### 1. IPFS starter
+<!-- 
+### IPFS starter
 ```
 uses: aquiladev/ipfs-action@master
 with:
   path: ./
 ```
 
-### 2. IPFS with output and params
+### IPFS with output and params
 ```
 uses: aquiladev/ipfs-action@master
 id: ipfs
@@ -54,8 +55,9 @@ with:
   timeout: 180000
   verbose: true
 ```
+-->
 
-### 3. Pinata starter
+### Pinata starter
 ```
 uses: aquiladev/ipfs-action@master
 with:
@@ -65,7 +67,7 @@ with:
   pinataSecret: ${{ secrets.PINATA_SECRET }}
 ```
 
-### 4. Infure starter
+### Infure starter
 ```
 uses: aquiladev/ipfs-action@master
 with:
