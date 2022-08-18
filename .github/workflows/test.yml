@@ -1,0 +1,47 @@
+name: Test Pin to Providers
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Publish Test [Pinata]
+        env:
+          PINATA_KEY: ${{ secrets.PINATA_KEY }}
+        if: "${{ env.PINATA_KEY != '' }}"
+        uses: ./
+        with:
+          path: 'dist'
+          service: 'pinata'
+          pinName: 'ipfs-action'
+          pinataKey: ${{ secrets.PINATA_KEY }}
+          pinataSecret: ${{ secrets.PINATA_SECRET }}
+
+      - name: Publish Test [Filebase]
+        env:
+          FILEBASE_BUCKET: ${{ secrets.FILEBASE_BUCKET }}
+        if: "${{ env.FILEBASE_BUCKET != '' }}"
+        uses: ./
+        with:
+          path: 'dist'
+          service: 'filebase'
+          pinName: 'ipfs-action'
+          filebaseBucket: ${{ secrets.FILEBASE_BUCKET }}
+          filebaseKey: ${{ secrets.FILEBASE_KEY }}
+          filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
+
+      - name: Publish Test [Infura]
+        env:
+          INFURA_PROJECT_ID: ${{ secrets.INFURA_PROJECT_ID }}
+        if: "${{ env.INFURA_PROJECT_ID != '' }}"
+        uses: ./
+        with:
+          path: 'dist'
+          service: 'pinata'
+          pinName: 'ipfs-action'
+          infuraProjectId: ${{ secrets.INFURA_PROJECT_ID }}
+          infuraProjectSecret: ${{ secrets.INFURA_PROJECT_SECRET }}

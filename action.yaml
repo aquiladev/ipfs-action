@@ -47,6 +47,17 @@ inputs:
   pinataPinName:
     description: '[pinata] Human name for pin'
     required: false
+  pinName:
+    description: '[psa] Human name for pin'
+    required: false
+  filebaseBucket:
+    description: '[filebase] Bucket Name. Required for Filebase service'
+    required: false
+  filebaseKey:
+    description: '[filebase] Api Key. Required for Filebase service'
+    required: false
+  filebaseSecret:
+    description: '[filebase] Secret Api Key. Required for Filebase service'
   infuraProjectId:
     description: '[infura] Project ID. Required for infura service'
     required: false
