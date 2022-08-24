@@ -43,7 +43,7 @@ module.exports = {
         console.log(`Storing files...`);
         let tokenString = `${api.key}:${api.secret}:${api.bucket}`;
         let cid = await FilebaseClient.storeDirectory(
-            { endpoint: 'https://s3.filebase.com', token: btoa(tokenString) },
+            { endpoint: 'https://s3.filebase.com', token: Buffer.from(tokenString).toString('base64') },
             files,
             pinName
         );

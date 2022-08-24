@@ -7,6 +7,9 @@ inputs:
   path:
     description: 'Directory path to upload'
     required: true
+  pinName:
+    description: 'Human name for pin'
+    required: false
   service:
     description: 'Type of target service to upload. Supported services [ipfs, pinata, infura]'
     required: false
@@ -46,9 +49,6 @@ inputs:
     required: false
   pinataPinName:
     description: '[pinata] Human name for pin'
-    required: false
-  pinName:
-    description: '[psa] Human name for pin'
     required: false
   filebaseBucket:
     description: '[filebase] Bucket Name. Required for Filebase service'

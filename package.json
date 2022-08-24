@@ -9,6 +9,12 @@
     "release": "npm i && release-it",
     "test": "jest"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "ipfs-car/pack": "<rootDir>/node_modules/ipfs-car/dist/cjs/pack/index.js",
+      "ipfs-car/blockstore/fs": "<rootDir>/node_modules/ipfs-car/dist/cjs/blockstore/fs.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aquiladev/ipfs-action.git"
