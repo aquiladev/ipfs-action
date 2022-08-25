@@ -1,3 +1,4 @@
+const fs = require("fs");
 const fsPath = require("path");
 
 module.exports =
@@ -20,7 +21,11 @@ module.exports =
           source = fsPath.join(dir, source);
         }
 
-        return upload(api, { ...options, path: source });
+        const pattern = fs.lstatSync(source).isDirectory()
+          ? `${path.basename(source)}/**/*`
+          : path.basename(source);
+
+        return upload(api, { ...options, path: source, pattern });
       },
     };
   };
