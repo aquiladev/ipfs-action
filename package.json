@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/aquiladev/ipfs-action#readme",
   "dependencies": {
-    "@actions/core": "1.4.0",
+    "@actions/core": "^1.9.1",
     "@actions/github": "5.0.0",
     "@filebase/client": "0.0.2",
     "@pinata/sdk": "1.1.23",
