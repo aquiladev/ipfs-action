@@ -1,8 +1,7 @@
 const { create, globSource } = require("ipfs-http-client");
 const PeerId = require("peer-id");
 const last = require("it-last");
-const fs = require("fs");
-const path = require("path");
+const fsPath = require("path");
 
 module.exports = {
   name: "IPFS",
@@ -12,10 +11,13 @@ module.exports = {
     return create({ host, port, protocol, timeout, headers });
   },
   upload: async (api, options) => {
-    const { path: p, timeout, verbose, key } = options;
-
-    const pattern = fs.lstatSync(p).isDirectory() ? `${path.basename(p)}/**/*` : path.basename(p);
-    const { cid } = await last(api.addAll(globSource(path.dirname(p), pattern), { pin: true, timeout }));
+    const { path, pattern, timeout, verbose, key } = options;
+    const { cid } = await last(
+      api.addAll(globSource(fsPath.dirname(path), pattern), {
+        pin: true,
+        timeout,
+      })
+    );
 
     if (!cid) throw new Error("Content hash is not found.");
 

@@ -20,7 +20,7 @@ Parameter             |Required |Description
 `key`                 |No       |[ipfs] IPNS key name. IPNS key will be published when the key parameter is provided. The key will be created if it does not exist. Default `undefined`
 `pinataKey`           |No       |[pinata] API Key. Required for pinata service.
 `pinataSecret`        |No       |[pinata] Secret Key. Required for pinata service.
-`pinataPinName`       |No       |[pinata] Human name for pin.
+`pinataPinName`       |No       |[pinata] Human name for pin. **Obsolete**, use `pinName` instead.
 `filebaseBucket`      |No       |[filebase] Bucket to store pin in. Required for filebase service.
 `filebaseKey`         |No       |[filebase] S3 Access Key. Required for filebase service.
 `filebaseSecret`      |No       |[filebase] S3 Secret Key. Required for filebase service.

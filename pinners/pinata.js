@@ -1,5 +1,4 @@
 const pinataSDK = require("@pinata/sdk");
-const fsPath = require("path");
 
 let pinataOptions = {
   pinataOptions: {
@@ -23,24 +22,18 @@ module.exports = {
     return pinataSDK(pinataKey, pinataSecret);
   },
   upload: async (api, options) => {
-    const { path, pinataPinName, verbose } = options;
-
-    let source = path;
-    if (!fsPath.isAbsolute(source)) {
-      const dir = (process.env.GITHUB_WORKSPACE || process.cwd()).toString();
-      source = fsPath.join(dir, source);
-    }
-
-    if (pinataPinName) {
+    const { path, pinName, pinataPinName, verbose } = options;
+    const _pinName = pinName || pinataPinName;
+    if (_pinName) {
       pinataOptions = {
         ...pinataOptions,
         pinataMetadata: {
-          name: pinataPinName,
+          name: _pinName,
         },
       };
     }
 
-    return api.pinFromFS(source, pinataOptions).then((result) => {
+    return api.pinFromFS(path, pinataOptions).then((result) => {
       if (verbose) {
         console.log(result);
       }
