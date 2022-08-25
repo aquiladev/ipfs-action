@@ -50,6 +50,7 @@ inputs:
   pinataPinName:
     description: '[pinata] Human name for pin'
     required: false
+    deprecationMessage: 'Obsolete input, use `pinName` instead'
   filebaseBucket:
     description: '[filebase] Bucket Name. Required for Filebase service'
     required: false

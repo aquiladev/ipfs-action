@@ -1,3 +1,5 @@
+const fsPath = require("path");
+
 module.exports =
   ({ builder, upload }) =>
   async (options) => {
@@ -10,7 +12,15 @@ module.exports =
           throw new Error("Path is empty");
         }
 
-        return upload(api, options);
+        let source = path;
+        if (!fsPath.isAbsolute(source)) {
+          const dir = (
+            process.env.GITHUB_WORKSPACE || process.cwd()
+          ).toString();
+          source = fsPath.join(dir, source);
+        }
+
+        return upload(api, { ...options, path: source });
       },
     };
   };
