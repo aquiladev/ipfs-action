@@ -22,8 +22,8 @@ module.exports =
         }
 
         const pattern = fs.lstatSync(source).isDirectory()
-          ? `${path.basename(source)}/**/*`
-          : path.basename(source);
+          ? `${fsPath.basename(source)}/**/*`
+          : fsPath.basename(source);
 
         return upload(api, { ...options, path: source, pattern });
       },
