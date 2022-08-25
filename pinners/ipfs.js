@@ -1,7 +1,6 @@
 const { create, globSource } = require("ipfs-http-client");
 const PeerId = require("peer-id");
 const last = require("it-last");
-// const fs = require("fs");
 const fsPath = require("path");
 
 module.exports = {
@@ -13,10 +12,6 @@ module.exports = {
   },
   upload: async (api, options) => {
     const { path, pattern, timeout, verbose, key } = options;
-
-    // const pattern = fs.lstatSync(p).isDirectory()
-    //   ? `${path.basename(p)}/**/*`
-    //   : path.basename(p);
     const { cid } = await last(
       api.addAll(globSource(fsPath.dirname(path), pattern), {
         pin: true,

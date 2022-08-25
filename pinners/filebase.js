@@ -1,4 +1,3 @@
-// const fsPath = require("path");
 const { FilebaseClient } = require("@filebase/client");
 const { filesFromPath } = require("files-from-path");
 
@@ -24,12 +23,6 @@ module.exports = {
   upload: async (api, options) => {
     console.log(`Parsing options...`);
     const { path, pinName, verbose } = options;
-
-    // let source = path;
-    // if (!fsPath.isAbsolute(source)) {
-    //   const dir = (process.env.GITHUB_WORKSPACE || process.cwd()).toString();
-    //   source = fsPath.join(dir, source);
-    // }
 
     console.log(`Adding files...`);
     const files = [];
