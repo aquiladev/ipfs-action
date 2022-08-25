@@ -10,7 +10,7 @@ Parameter             |Required |Description
 ---                   |---      |---
 `path`                |Yes      |Directory's path to upload.
 `pinName`             |No       |Human name for pin.
-`service`             |No       |Type of target service to upload. Supported services [`ipfs`, `pinata`, `infura`]. Default `ipfs`
+`service`             |No       |Type of target service to upload. Supported services [`ipfs`, `pinata`, `infura`, `filebase`]. Default `ipfs`
 `timeout`             |No       |Request timeout. Default `60000` (1 minute)
 `verbose`             |No       |Level of verbosity [`false` - quiet, `true` - verbose]. Default `false`
 `host`                |No       |[ipfs] IPFS host. Default `ipfs.komputing.org`
@@ -70,7 +70,7 @@ with:
   pinataSecret: ${{ secrets.PINATA_SECRET }}
 ```
 
-### Infure starter
+### Infura starter
 ```
 uses: aquiladev/ipfs-action@master
 with:

@@ -11,7 +11,7 @@ inputs:
     description: 'Human name for pin'
     required: false
   service:
-    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura]'
+    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura, filebase]'
     required: false
     default: 'ipfs'
   timeout:
