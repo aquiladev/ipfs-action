@@ -7,11 +7,13 @@ module.exports = {
   builder: async (options) => {
     const { infuraProjectId, infuraProjectSecret, headers, timeout } = options;
     if (!infuraProjectId) {
-      throw new Error("[infura] ProjectId is empty");
+      throw new Error("[infura] ProjectId is empty. (input `infuraProjectId`)");
     }
 
     if (!infuraProjectSecret) {
-      throw new Error("[infura] ProjectSecret is empty");
+      throw new Error(
+        "[infura] ProjectSecret is empty. (input `infuraProjectSecret`)"
+      );
     }
 
     const token = Buffer.from(
@@ -30,15 +32,12 @@ module.exports = {
     });
   },
   upload: async (api, options) => {
-    const { path, pattern, verbose } = options;
+    const { path, pattern, pin } = options;
     const { cid } = await last(
-      api.addAll(globSource(fsPath.dirname(path), pattern), { pin: true })
+      api.addAll(globSource(fsPath.dirname(path), pattern), { pin })
     );
 
     if (!cid) throw new Error("Content hash is not found.");
-
-    if (verbose) console.log(cid);
-
     return {
       cid: cid.toString(),
       ipfs: cid.toString(),

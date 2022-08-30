@@ -11,17 +11,15 @@ module.exports = {
     return create({ host, port, protocol, timeout, headers });
   },
   upload: async (api, options) => {
-    const { path, pattern, timeout, verbose, key } = options;
+    const { path, pattern, pin, timeout, key, verbose } = options;
     const { cid } = await last(
       api.addAll(globSource(fsPath.dirname(path), pattern), {
-        pin: true,
+        pin,
         timeout,
       })
     );
 
     if (!cid) throw new Error("Content hash is not found.");
-
-    if (verbose) console.log(cid);
 
     let _key;
     if (key) {
