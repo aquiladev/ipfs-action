@@ -38,7 +38,7 @@ describe("pinata", () => {
   it("throws error when pinataKey is empty", async () => {
     await expect(
       uploader.upload({ ...options, path: "./data", service: "pinata" })
-    ).rejects.toThrow("[pinata] API Key is empty");
+    ).rejects.toThrow("[pinata] Key is empty. (input `pinataKey`)");
   });
 
   it("throws error when pinataSecret is empty", async () => {
@@ -57,7 +57,7 @@ describe("filebase", () => {
   it("throws error when filebaseKey is empty", async () => {
     await expect(
       uploader.upload({ ...options, path: "./data", service: "filebase" })
-    ).rejects.toThrow("filebaseKey is empty");
+    ).rejects.toThrow("[filebase] Key is empty. (input `filebaseKey`)");
   });
 
   it("throws error when filebaseSecret is empty", async () => {
@@ -68,6 +68,6 @@ describe("filebase", () => {
         service: "filebase",
         filebaseKey: ".",
       })
-    ).rejects.toThrow("filebaseSecret is empty");
+    ).rejects.toThrow("[filebase] Secret is empty. (input `filebaseSecret`)");
   });
 });
