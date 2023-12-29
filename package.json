@@ -37,7 +37,7 @@
   "dependencies": {
     "@actions/core": "1.4.0",
     "@actions/github": "5.0.0",
-    "@filebase/client": "0.0.2",
+    "@filebase/sdk": "1.0.2",
     "@pinata/sdk": "1.1.23",
     "files-from-path": "0.2.6",
     "ipfs-http-client": "55.0.0",
