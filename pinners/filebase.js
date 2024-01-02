@@ -28,6 +28,7 @@ module.exports = {
   upload: async (api, options) => {
     console.log(`Parsing options...`);
     const { path, pinName, verbose, key } = options;
+    console.dir(options);
 
     let source = path;
     if (!fsPath.isAbsolute(source)) {

@@ -35,13 +35,13 @@
   },
   "homepage": "https://github.com/aquiladev/ipfs-action#readme",
   "dependencies": {
-    "@actions/core": "1.4.0",
-    "@actions/github": "5.0.0",
+    "@actions/core": "1.10.1",
+    "@actions/github": "6.0.0",
     "@filebase/sdk": "1.0.2",
-    "@pinata/sdk": "1.1.23",
-    "files-from-path": "0.2.6",
-    "ipfs-http-client": "55.0.0",
-    "it-last": "1.0.5",
+    "@pinata/sdk": "1.2.1",
+    "files-from-path": "1.0.4",
+    "ipfs-http-client": "60.0.1",
+    "it-last": "3.0.4",
     "peer-id": "0.16.0"
   },
   "devDependencies": {
