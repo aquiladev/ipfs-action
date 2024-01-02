@@ -33,6 +33,7 @@ jobs:
           filebaseBucket: ${{ secrets.FILEBASE_BUCKET }}
           filebaseKey: ${{ secrets.FILEBASE_KEY }}
           filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
+          key: ${{ secrets.FILEBASE_NAME }}
 
       - name: Publish Test [Infura]
         env:
