@@ -8,7 +8,7 @@ let pinataOptions = {
   },
 };
 
-module.exports = {
+export default {
   name: "Pinata",
   builder: async (options) => {
     const { pinataKey, pinataSecret } = options;

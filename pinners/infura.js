@@ -4,7 +4,7 @@ import last from "it-last";
 import fs from "node:fs";
 import path from "node:path";
 
-module.exports = {
+export default {
   name: "Infura",
   builder: async (options) => {
     const { infuraProjectId, infuraProjectSecret, headers, timeout } = options;

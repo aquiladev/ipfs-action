@@ -1,4 +1,4 @@
-import pinners from "./pinners";
+import pinners from "./pinners/index.js";
 
 export default {
   upload: async (options) => {
