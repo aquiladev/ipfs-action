@@ -34,7 +34,7 @@ export default {
     let source = path;
     if (!fsPath.isAbsolute(source)) {
       const dir = (process.env.GITHUB_WORKSPACE || process.cwd()).toString();
-      source = path.join(dir, source);
+      source = fsPath.join(dir, source);
     }
 
     console.log(`Adding files...`);
