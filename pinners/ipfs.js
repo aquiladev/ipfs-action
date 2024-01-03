@@ -1,4 +1,3 @@
-const { create, globSource } = require("ipfs-http-client");
 import { create, globSource } from "ipfs-http-client";
 import PeerId from "peer-id";
 import last from "it-last";
