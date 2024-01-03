@@ -42,6 +42,8 @@
     "@pinata/sdk": "1.1.23",
     "files-from-path": "1.0.4",
     "ipfs-http-client": "60.0.1",
+    "kubo-rpc-client": "3.0.2",
+    "it-drain": "3.0.5",
     "it-last": "3.0.4",
     "peer-id": "0.16.0"
   },

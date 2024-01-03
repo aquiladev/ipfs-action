@@ -1,4 +1,4 @@
-import { create, globSource } from "ipfs-http-client";
+import { create, globSource } from "kubo-rpc-client";
 
 import last from "it-last";
 import fs from "node:fs";
