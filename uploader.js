@@ -1,6 +1,6 @@
-const pinners = require("./pinners");
+import pinners from "./pinners";
 
-module.exports = {
+export default {
   upload: async (options) => {
     const { service } = options;
 

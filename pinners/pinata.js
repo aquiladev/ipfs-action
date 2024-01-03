@@ -1,5 +1,5 @@
-const pinataSDK = require("@pinata/sdk");
-const fsPath = require("path");
+import pinataSDK from "@pinata/sdk";
+import path from "node:path";
 
 let pinataOptions = {
   pinataOptions: {
@@ -26,9 +26,9 @@ module.exports = {
     const { path, pinataPinName, verbose } = options;
 
     let source = path;
-    if (!fsPath.isAbsolute(source)) {
+    if (!path.isAbsolute(source)) {
       const dir = (process.env.GITHUB_WORKSPACE || process.cwd()).toString();
-      source = fsPath.join(dir, source);
+      source = path.join(dir, source);
     }
 
     if (pinataPinName) {

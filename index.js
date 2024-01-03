@@ -1,3 +1,3 @@
-const run = require('./runner');
+import run from "./runner.js"
 
-run();
+await run();

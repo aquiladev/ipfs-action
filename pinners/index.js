@@ -1,8 +1,13 @@
-const make = require("./maker");
+import make from "./maker.js";
 
-module.exports = {
-  ipfs: make(require("./ipfs")),
-  pinata: make(require("./pinata")),
-  infura: make(require("./infura")),
-  filebase: make(require("./filebase"))
+import ipfs from "./ipfs.js";
+import pinata from "./pinata.js";
+import infura from "./infura.js";
+import filebase from "./filebase.js";
+
+export default {
+  ipfs: make(ipfs),
+  pinata: make(pinata),
+  infura: make(infura),
+  filebase: make(filebase)
 };

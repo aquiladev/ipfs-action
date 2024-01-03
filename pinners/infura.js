@@ -1,7 +1,8 @@
-const { create, globSource } = require("ipfs-http-client");
-const last = require("it-last");
-const fs = require("fs");
-const path = require("path");
+import { create, globSource } from "ipfs-http-client";
+
+import last from "it-last";
+import fs from "node:fs";
+import path from "node:path";
 
 module.exports = {
   name: "Infura",

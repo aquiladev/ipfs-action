@@ -1,7 +1,7 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+import core from "@actions/core";
+import github from "@actions/github";
 
-const uploader = require("./uploader");
+import uploader from "./uploader.js";
 
 async function run() {
   try {
@@ -65,4 +65,4 @@ async function run() {
   }
 }
 
-module.exports = run;
+export default run;

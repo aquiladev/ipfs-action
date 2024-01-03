@@ -1,4 +1,4 @@
-const run = require("./runner");
+import run from "./runner.js"
 
 jest.setTimeout(240000);
 
