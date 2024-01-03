@@ -26,7 +26,6 @@ export default {
     };
   },
   upload: async (api, options) => {
-    console.log(`Filebase Upload Starting`);
     console.log(`Parsing options...`);
     const { path, pinName, verbose, key } = options;
     console.log(`Parsed Options: ${JSON.stringify(options)}`);
@@ -38,8 +37,9 @@ export default {
     }
 
     console.log(`Adding files...`);
+    const filesFromPath = await filesFromPaths(source);
     const files = [];
-    for await (const file of filesFromPaths(source, { pathPrefix: source })) {
+    for await (const file of filesFromPath) {
       files.push({ path: file.name, content: file.stream() });
       if (verbose) {
         console.log(`Added File: ${JSON.stringify(file)}`);
