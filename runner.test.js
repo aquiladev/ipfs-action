@@ -1,5 +1,6 @@
 import run from "./runner.js"
 
+import {jest} from '@jest/globals';
 jest.setTimeout(240000);
 
 describe.skip("index: Integration test", () => {
