@@ -74,5 +74,5 @@ outputs:
   ipns:
     description: 'IPNS CID if applicable'
 runs:
-  using: 'node20'
+  using: 'node16'
   main: 'dist/index.js'
