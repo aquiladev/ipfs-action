@@ -1,8 +1,7 @@
 import { create, globSource } from "kubo-rpc-client";
 import PeerId from "peer-id";
 import last from "it-last";
-import fs from "node:fs";
-import path from "node:path";
+import * as fsPath from "node:path";
 
 export default {
   name: "IPFS",
@@ -12,14 +11,15 @@ export default {
     return create({ host, port, protocol, timeout, headers });
   },
   upload: async (api, options) => {
-    const { path: p, timeout, verbose, key } = options;
-
-    const pattern = fs.lstatSync(p).isDirectory() ? `${path.basename(p)}/**/*` : path.basename(p);
-    const { cid } = await last(api.addAll(globSource(path.dirname(p), pattern), { pin: true, timeout }));
+    const { path, pattern, pin, timeout, key, verbose } = options;
+    const { cid } = await last(
+      api.addAll(globSource(fsPath.dirname(path), pattern), {
+        pin,
+        timeout,
+      })
+    );
 
     if (!cid) throw new Error("Content hash is not found.");
-
-    if (verbose) console.log(cid);
 
     let _key;
     if (key) {

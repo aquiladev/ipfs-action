@@ -70,7 +70,7 @@ with:
   pinataSecret: ${{ secrets.PINATA_SECRET }}
 ```
 
-### Infure starter
+### Infura starter
 ```
 uses: aquiladev/ipfs-action@master
 with:

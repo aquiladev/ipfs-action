@@ -7,11 +7,15 @@ inputs:
   path:
     description: 'Directory path to upload'
     required: true
+  pin:
+    description: 'Pin object when adding'
+    required: false
+    default: true
   pinName:
     description: 'Human name for pin'
     required: false
   service:
-    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura]'
+    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura, filebase]'
     required: false
     default: 'ipfs'
   timeout:
@@ -50,6 +54,7 @@ inputs:
   pinataPinName:
     description: '[pinata] Human name for pin'
     required: false
+    deprecationMessage: 'Obsolete input, use `pinName` instead'
   filebaseBucket:
     description: '[filebase] Bucket Name. Required for Filebase service'
     required: false

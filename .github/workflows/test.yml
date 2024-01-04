@@ -42,7 +42,7 @@ jobs:
         uses: ./
         with:
           path: 'dist'
-          service: 'pinata'
+          service: 'infura'
           pinName: 'ipfs-action'
           infuraProjectId: ${{ secrets.INFURA_PROJECT_ID }}
           infuraProjectSecret: ${{ secrets.INFURA_PROJECT_SECRET }}
