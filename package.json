@@ -1,6 +1,6 @@
 {
   "name": "ipfs-action",
-  "version": "0.3.1-alpha.0",
+  "version": "1.0.0",
   "description": "IPFS upload action",
   "exports": "./index.js",
   "type": "module",
