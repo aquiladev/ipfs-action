@@ -1,5 +1,5 @@
-const fs = require("fs");
-const fsPath = require("path");
+import fs from "node:fs"
+import * as fsPath from "node:path"
 
 export default
   ({ builder, upload }) =>
