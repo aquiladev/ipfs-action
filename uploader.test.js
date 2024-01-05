@@ -1,5 +1,6 @@
-const uploader = require("./uploader");
+import uploader from "./uploader.js";
 
+import {jest} from '@jest/globals';
 jest.setTimeout(240000);
 
 const options = {

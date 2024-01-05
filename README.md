@@ -83,7 +83,7 @@ with:
 
 ### Filebase starter
 ```
-uses: aquiladev/ipfs-action@v1
+uses: aquiladev/ipfs-action@master
 with:
   path: ./build
   service: filebase
@@ -91,4 +91,5 @@ with:
   filebaseBucket: ${{ secrets.FILEBASE_BUCKET }}
   filebaseKey: ${{ secrets.FILEBASE_KEY }}
   filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
+  key: ${{ vars.FILEBASE_NAME }}
 ```

@@ -1,9 +1,9 @@
-const { create, globSource } = require("ipfs-http-client");
-const PeerId = require("peer-id");
-const last = require("it-last");
-const fsPath = require("path");
+import { create, globSource } from "kubo-rpc-client";
+import PeerId from "peer-id";
+import last from "it-last";
+import * as fsPath from "node:path";
 
-module.exports = {
+export default {
   name: "IPFS",
   builder: async (options) => {
     const { host, port, protocol, timeout, headers } = options;

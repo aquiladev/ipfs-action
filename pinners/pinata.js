@@ -1,4 +1,4 @@
-const pinataSDK = require("@pinata/sdk");
+import pinataSDK from "@pinata/sdk";
 
 let pinataOptions = {
   pinataOptions: {
@@ -7,7 +7,7 @@ let pinataOptions = {
   },
 };
 
-module.exports = {
+export default {
   name: "Pinata",
   builder: async (options) => {
     const { pinataKey, pinataSecret } = options;

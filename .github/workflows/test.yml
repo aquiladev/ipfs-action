@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Publish Test [Pinata]
         env:
@@ -33,6 +33,7 @@ jobs:
           filebaseBucket: ${{ secrets.FILEBASE_BUCKET }}
           filebaseKey: ${{ secrets.FILEBASE_KEY }}
           filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
+          key: ${{ vars.FILEBASE_NAME }}
 
       - name: Publish Test [Infura]
         env:
