@@ -1,19 +1,18 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+import core from "@actions/core";
+import github from "@actions/github";
 
-const uploader = require("./uploader");
+import uploader from "./uploader.js";
 
 async function run() {
   try {
     const path = core.getInput("path");
-    const pin = core.getInput("pin");
-    const pinName = core.getInput("pinName");
     const service = core.getInput("service");
     const host = core.getInput("host");
     const port = core.getInput("port");
     const protocol = core.getInput("protocol");
     const headers = core.getInput("headers");
     const key = core.getInput("key");
+    const pinName = core.getInput("pinName");
     const pinataKey = core.getInput("pinataKey");
     const pinataSecret = core.getInput("pinataSecret");
     const pinataPinName = core.getInput("pinataPinName");
@@ -27,14 +26,13 @@ async function run() {
 
     const options = {
       path,
-      pin,
-      pinName,
       service,
       host,
       port,
       protocol,
       headers: JSON.parse(headers || "{}"),
       key,
+      pinName,
       pinataKey,
       pinataSecret,
       pinataPinName,
@@ -67,4 +65,4 @@ async function run() {
   }
 }
 
-module.exports = run;
+export default run;
