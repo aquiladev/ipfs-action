@@ -8,15 +8,15 @@ export default {
     const { filebaseKey, filebaseSecret, filebaseBucket } = options;
 
     if (!filebaseKey) {
-      throw new Error("filebaseKey is empty");
+      throw new Error("[filebase] Key is empty. (input `filebaseKey`)");
     }
 
     if (!filebaseSecret) {
-      throw new Error("filebaseSecret is empty");
+      throw new Error("[filebase] Secret is empty. (input `filebaseSecret`)");
     }
 
     if (!filebaseBucket) {
-      throw new Error("filebaseBucket is empty");
+      throw new Error("[filebase] Bucket is empty. (input `filebaseBucket`)");
     }
 
     return {
@@ -28,7 +28,7 @@ export default {
   upload: async (api, options) => {
     console.log(`Parsing options...`);
     const { path, pinName, verbose, key } = options;
-    console.log(`Parsed Options: ${JSON.stringify(options)}`);
+    console.log(`Parsed Options`);
 
     let source = path;
     if (!fsPath.isAbsolute(source)) {
