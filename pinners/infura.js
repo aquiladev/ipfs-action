@@ -1,8 +1,8 @@
-const { create, globSource } = require("ipfs-http-client");
-const last = require("it-last");
-const fsPath = require("path");
+import { create, globSource } from "kubo-rpc-client";
+import last from "it-last";
+import * as fsPath from "node:path";
 
-module.exports = {
+export default {
   name: "Infura",
   builder: async (options) => {
     const { infuraProjectId, infuraProjectSecret, headers, timeout } = options;
