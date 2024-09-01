@@ -38,7 +38,7 @@
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
     "@filebase/client": "0.0.2",
-    "@pinata/sdk": "2.1.0",
+    "@pinata/sdk": "1.1.23",
     "files-from-path": "0.2.6",
     "ipfs-http-client": "55.0.0",
     "it-last": "1.0.5",

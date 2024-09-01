@@ -19,10 +19,7 @@ module.exports = {
       throw new Error("[pinata] Secret is empty. (input `pinataSecret`)");
     }
 
-    return new pinataSDK({
-      pinataApiKey: pinataKey,
-      pinataSecretApiKey: pinataSecret,
-    });
+    return pinataSDK(pinataKey, pinataSecret);
   },
   upload: async (api, options) => {
     const { path, pinName, pinataPinName, verbose } = options;
