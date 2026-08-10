@@ -15,7 +15,7 @@ inputs:
     description: 'Human name for pin'
     required: false
   service:
-    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura, filebase]'
+    description: 'Type of target service to upload. Supported services [ipfs, pinata, infura, filebase, paytopin]'
     required: false
     default: 'ipfs'
   timeout:
@@ -68,6 +68,18 @@ inputs:
     required: false
   infuraProjectSecret:
     description: '[infura] Project Secret. Required for infura service'
+    required: false
+  paytopinMnemonic:
+    description: '[paytopin] Algorand mnemonic for x402 payments. Required for paytopin service'
+    required: false
+  paytopinGatewayUrl:
+    description: '[paytopin] Gateway URL (default: https://pay-to-pin.duckdns.org)'
+    required: false
+  paytopinNetwork:
+    description: '[paytopin] Algorand network: mainnet or testnet (default: mainnet)'
+    required: false
+  paytopinMaxPriceUsdc:
+    description: '[paytopin] Maximum price in USDC (default: 1.0)'
     required: false
 outputs:
   hash:

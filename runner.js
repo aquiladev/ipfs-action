@@ -22,6 +22,10 @@ async function run() {
     const filebaseSecret = core.getInput("filebaseSecret")
     const infuraProjectId = core.getInput("infuraProjectId");
     const infuraProjectSecret = core.getInput("infuraProjectSecret");
+    const paytopinMnemonic = core.getInput("paytopinMnemonic");
+    const paytopinGatewayUrl = core.getInput("paytopinGatewayUrl");
+    const paytopinNetwork = core.getInput("paytopinNetwork");
+    const paytopinMaxPriceUsdc = core.getInput("paytopinMaxPriceUsdc");
     const timeout = core.getInput("timeout");
     const verbose = core.getInput("verbose") === "true";
 
@@ -43,6 +47,10 @@ async function run() {
       filebaseSecret,
       infuraProjectId,
       infuraProjectSecret,
+      paytopinMnemonic,
+      paytopinGatewayUrl,
+      paytopinNetwork,
+      paytopinMaxPriceUsdc,
       timeout,
       verbose,
     };

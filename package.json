@@ -41,6 +41,7 @@
     "@pinata/sdk": "1.1.23",
     "files-from-path": "0.2.6",
     "ipfs-http-client": "55.0.0",
+    "ipfs-pay-to-pin-client": "^1.1.1",
     "it-last": "1.0.5",
     "peer-id": "0.16.0"
   },
