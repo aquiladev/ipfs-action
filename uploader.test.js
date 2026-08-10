@@ -71,3 +71,11 @@ describe("filebase", () => {
     ).rejects.toThrow("[filebase] Secret is empty. (input `filebaseSecret`)");
   });
 });
+
+describe("paytopin", () => {
+  it("throws error when paytopinMnemonic is empty", async () => {
+    await expect(
+      uploader.upload({ ...options, path: "./data", service: "paytopin" })
+    ).rejects.toThrow("[paytopin] Mnemonic is empty. (input `paytopinMnemonic`)");
+  });
+});

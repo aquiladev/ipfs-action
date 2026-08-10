@@ -11,7 +11,7 @@ Parameter             |Required |Description
 `path`                |Yes      |Directory's path to upload.
 `pin`                 |No       |Pin object when adding. (Default `true`)
 `pinName`             |No       |Human name for pin.
-`service`             |No       |Type of target service to upload. Supported services [`ipfs`, `pinata`, `infura`, `filebase`]. (Default `ipfs`)
+`service`             |No       |Type of target service to upload. Supported services [`ipfs`, `pinata`, `infura`, `filebase`, `paytopin`]. (Default `ipfs`)
 `timeout`             |No       |Request timeout. (Default `60000` (1 minute))
 `verbose`             |No       |Level of verbosity [`false` - quiet, `true` - verbose]. (Default `false`)
 `host`                |No       |[ipfs] IPFS host. Default `ipfs.komputing.org`
@@ -27,6 +27,10 @@ Parameter             |Required |Description
 `filebaseSecret`      |No       |[filebase] S3 Secret Key. Required for filebase service.
 `infuraProjectId`     |No       |[infura] Project ID. Required for infura service.
 `infuraProjectSecret` |No       |[infura] Project Secret. Required for infura service.
+`paytopinMnemonic`    |No       |[paytopin] Algorand mnemonic for x402 payments. Required for paytopin service.
+`paytopinGatewayUrl`  |No       |[paytopin] Gateway URL (default: `https://pay-to-pin.duckdns.org`).
+`paytopinNetwork`     |No       |[paytopin] Algorand network: `mainnet` or `testnet` (default: `mainnet`).
+`paytopinMaxPriceUsdc`|No       |[paytopin] Maximum price in USDC (default: `1.0`).
 ## Outputs
 
 - `hash` - IPFS CID
@@ -92,3 +96,26 @@ with:
   filebaseKey: ${{ secrets.FILEBASE_KEY }}
   filebaseSecret: ${{ secrets.FILEBASE_SECRET }}
 ```
+
+### Pay-to-Pin starter
+```yaml
+uses: aquiladev/ipfs-action@v1
+with:
+  path: ./build
+  service: paytopin
+  paytopinMnemonic: ${{ secrets.ALGORAND_MNEMONIC }}
+```
+
+#### Pay-to-Pin with options
+```yaml
+uses: aquiladev/ipfs-action@v1
+with:
+  path: ./build
+  service: paytopin
+  paytopinMnemonic: ${{ secrets.ALGORAND_MNEMONIC }}
+  paytopinNetwork: testnet
+  paytopinMaxPriceUsdc: 0.5
+  verbose: true
+```
+
+**About Pay-to-Pin:** [IPFS Pay-to-Pin](https://github.com/IcanBENCHurCAT/ipfs-pay-to-pin) enables pay-as-you-go IPFS storage using Algorand microUSDC x402 payments. No monthly subscriptions — pay only for what you pin. Each pin is retained for 365 days, with automatic renewal available.
